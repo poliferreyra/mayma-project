@@ -16,7 +16,7 @@ interface ProductCardProps {
 }
 export const ProductCard = (props: ProductCardProps) => {
   return (
-    <Card maxW="sm">
+    <Card boxShadow="lg" borderRadius={"2xl"}>
       <CardBody>
         <Image src={props.image} alt={props.title} borderRadius="lg" />
         <Stack mt="6" spacing="3">
