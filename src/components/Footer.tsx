@@ -16,14 +16,15 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 
-import logo from "../assets/logoMayma.png";
+import logo from "@/assets/logoMayma.png";
+
 import { SocialLinks } from "./SocialLinks";
 
 export const Footer = () => {
   return (
     <Stack>
       <Container maxW={"1200"}>
-        <Flex justifyContent="space-between">
+        <Flex justifyContent="space-between" py="50px">
           <Box boxSize={"15%"}>
             <Image objectFit="cover" src={logo} alt="logo Mayma" />
           </Box>
@@ -49,7 +50,7 @@ export const Footer = () => {
         </Flex>
       </Container>
 
-      <Container maxW={"1200"}>
+      <Container maxW={"1200"} py="22px">
         <Flex justifyContent="space-between">
           <Box>
             <Text>© 2017 Todos los derechos reservados</Text>
