@@ -8,12 +8,15 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 interface ProductCardProps {
+  id: number;
   title: string;
   description: string;
   image: string;
 }
+
 export const ProductCard = (props: ProductCardProps) => {
   return (
     <Card boxShadow="lg" borderRadius={"2xl"}>
@@ -24,7 +27,12 @@ export const ProductCard = (props: ProductCardProps) => {
           <Text>{props.description}</Text>
         </Stack>
         <Divider mt={3} />
-        <Button variant="ghost" colorScheme="blue">
+        <Button
+          as={Link}
+          to={`/details/${props.id}`}
+          variant="ghost"
+          colorScheme="blue"
+        >
           Ver detalle
         </Button>
       </CardBody>

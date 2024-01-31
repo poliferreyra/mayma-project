@@ -50,7 +50,7 @@ export const Footer = () => {
         </Flex>
       </Container>
 
-      <Container maxW={"1200"} py="22px">
+      <Container maxW={"1200"}>
         <Flex justifyContent="space-between">
           <Box>
             <Text>© 2017 Todos los derechos reservados</Text>
