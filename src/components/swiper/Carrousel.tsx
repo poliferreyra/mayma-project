@@ -11,6 +11,9 @@ import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import slider1 from "@/assets/slider1.png";
+import slider2 from "@/assets/slider2.jpg";
+
 export const Carrousel = () => {
   return (
     <Swiper
@@ -25,18 +28,10 @@ export const Carrousel = () => {
       className="mySwiper"
     >
       <SwiperSlide>
-        <Image
-          src="https://mayma.lat/web/image/23700/Slider%20-%20foto.png"
-          objectFit="cover"
-          boxSize="400px"
-        />
+        <Image src={slider1} objectFit="cover" boxSize="400px" />
       </SwiperSlide>
       <SwiperSlide>
-        <Image
-          src="https://mayma.lat/web/image/22642/3.jpg"
-          objectFit="cover"
-          boxSize="400px"
-        />
+        <Image src={slider2} objectFit="cover" boxSize="400px" />
       </SwiperSlide>
     </Swiper>
   );
