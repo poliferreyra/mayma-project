@@ -3,23 +3,14 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 import { Map } from "@/components/googleMaps/Map";
 import { ProductCard } from "@/components/ProductCard";
+import { Carrousel } from "@/components/swiper/Carrousel";
 import { products } from "@/services/products";
 
 export const Home = () => {
   return (
     <Container maxW={"1200"}>
+      <Carrousel />
       <Map />
-
-      {/* <SimpleGrid columns={3} spacing={5} mt={3}>
-        {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            title={product.title}
-            description={product.description}
-            image={product.image}
-          />
-        ))}
-      </SimpleGrid> */}
 
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
         <Masonry gutter="15px">
