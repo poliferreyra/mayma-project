@@ -30,12 +30,11 @@ export const Carrousel = () => {
     >
       <SwiperSlide>
         <Box
-          w="100vw"
+          w="100%"
           h="400px"
           bgImage={`url(${slider1})`}
-          bgPosition="center"
-          bgRepeat="no-repeat"
-          objectFit="cover"
+          bgSize={"cover"}
+          bgPosition="top"
           display={"flex"}
           alignItems={"center"}
           justifyContent={"center"}
@@ -74,9 +73,8 @@ export const Carrousel = () => {
           w="100%"
           h="400px"
           bgImage={`url(${slider2})`}
-          bgPosition="center center"
-          bgRepeat="no-repeat"
-          objectFit="contain"
+          bgSize={"cover"}
+          bgPosition="center"
           display={"flex"}
           alignItems={"center"}
           justifyContent={"center"}
