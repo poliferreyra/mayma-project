@@ -14,7 +14,8 @@ export const Map = () => {
           width: "100%",
           height: "200px",
           borderRadius: "15px",
-          marginTop: "30px",
+          margin: "30px 0 30px",
+          
         }} // Establece el estilo del contenedor del mapa
       ></GoogleMap>
     </LoadScript>

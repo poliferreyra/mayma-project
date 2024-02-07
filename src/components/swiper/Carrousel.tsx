@@ -57,7 +57,7 @@ export const Carrousel = () => {
               target="_blank"
               rel="noopener noreferrer"
               size="lg"
-              bg="#C9302C"
+              bg="#d43f3a"
               mt="24px"
               color="white"
               borderRadius="20px"

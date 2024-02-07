@@ -8,7 +8,7 @@ import { products } from "@/services/products";
 
 export const Home = () => {
   return (
-    <Container maxW={"1200"}>
+    <Container maxW={"1200"} mt={5}>
       <Carrousel />
       <Map />
 
