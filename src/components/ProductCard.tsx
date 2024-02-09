@@ -20,8 +20,8 @@ interface ProductCardProps {
 export const ProductCard = (props: ProductCardProps) => {
   return (
     <Card boxShadow="lg" borderRadius={"2xl"}>
+      <Image src={props.image} alt={props.title} borderTopRadius={"2xl"} />
       <CardBody>
-        <Image src={props.image} alt={props.title} borderRadius="lg" />
         <Stack mt="6" spacing="3">
           <Heading size="md">{props.title}</Heading>
           <Text>{props.description}</Text>

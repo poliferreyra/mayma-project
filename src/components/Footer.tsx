@@ -26,7 +26,7 @@ export const Footer = () => {
       mt={10}
       px={6}
       bg="#F8F8F8"
-      boxShadow="0px -4px 6px rgba(0, 0, 0, 0.1)"
+      //boxShadow="0px -4px 6px rgba(0, 0, 0, 0.1)"
     >
       <Container maxW={"1200"} pt={6}>
         <Flex justifyContent="space-between">
