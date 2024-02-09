@@ -1,12 +1,11 @@
 import {
   Box,
   Container,
-  Flex,
-  HStack,
   Image,
-  Link,
+  SimpleGrid,
   Stack,
   Text,
+  VStack,
 } from "@chakra-ui/react";
 import {
   FaFacebook,
@@ -29,53 +28,82 @@ export const Footer = () => {
       //boxShadow="0px -4px 6px rgba(0, 0, 0, 0.1)"
     >
       <Container maxW={"1200"} pt={6}>
-        <Flex justifyContent="space-between">
-          <Box boxSize={"15%"}>
+        <VStack gap={6}>
+          <Box boxSize={"20%"}>
             <Image objectFit="cover" src={logo} alt="logo Mayma" />
           </Box>
+
           {/* social icons */}
-          <HStack gap={2} align={"center"}>
+          <SimpleGrid columns={5} spacing={3}>
             <SocialLinks
               url="https://wa.me/5493546565993"
-              icon={FaWhatsapp}
-              size="25px"
+              isRound={true}
+              variant="outline"
+              border={"2px"}
               color="#9E9E9E"
+              size='sm'
+              fontSize="15px"
+              icon={<FaWhatsapp />}
               _hover={{ color: "#1AD03F" }}
+              aria-label={""}
             />
             <SocialLinks
               url="https://www.instagram.com/comunidadmayma/"
-              icon={FaInstagram}
-              size="25px"
+              isRound={true}
+              variant="outline"
+              border={"2px"}
               color="#9E9E9E"
+              size='sm'
+              fontSize="15px"
+              icon={<FaInstagram />}
               _hover={{ color: "#F70593" }}
+              aria-label={""}
             />
             <SocialLinks
               url="https://www.facebook.com/ComunidadMayma/"
-              icon={FaFacebook}
-              size="25px"
+              isRound={true}
+              variant="outline"
+              border={"2px"}
               color="#9E9E9E"
+              size='sm'
+              fontSize="15px"
+              icon={<FaFacebook />}
               _hover={{ color: "#1773EA" }}
+              aria-label={""}
             />
             <SocialLinks
               url="https://www.linkedin.com/company/programa-mayma/"
-              icon={FaLinkedin}
-              size="25px"
+              isRound={true}
+              variant="outline"
+              border={"2px"}
               color="#9E9E9E"
+              size='sm'
+              fontSize="15px"
+              icon={<FaLinkedin />}
               _hover={{ color: "#0073B1" }}
+              aria-label={""}
             />
             <SocialLinks
               url="https://www.linkedin.com/company/programa-mayma/"
-              icon={FaYoutube}
-              size="25px"
+              isRound={true}
+              variant="outline"
+              border={"2px"}
               color="#9E9E9E"
+              size='sm'
+              fontSize="15px"
+              icon={<FaYoutube />}
               _hover={{ color: "#F70000" }}
+              aria-label={""}
             />
-          </HStack>
-        </Flex>
+          </SimpleGrid>
+          <Box>
+            <Text color={"#9E9E9E"}>© 2017 Todos los derechos reservados</Text>
+          </Box>
+        </VStack>
       </Container>
 
       <Container maxW={"1200"} py={6}>
-        <Flex justifyContent="space-between">
+        {/* <Flex justifyContent="space-between">
           <Box>
             <Text color={"#9E9E9E"}>© 2017 Todos los derechos reservados</Text>
           </Box>
@@ -88,7 +116,7 @@ export const Footer = () => {
               Términos y Condiciones
             </Link>
           </Box>
-        </Flex>
+        </Flex> */}
       </Container>
     </Stack>
   );

@@ -1,29 +1,22 @@
-import { Link as ChakraLink } from "@chakra-ui/react";
-import { IconType } from "react-icons";
+import {
+  IconButton,
+  IconButtonProps,
+  Link as ChakraLink,
+} from "@chakra-ui/react";
+import { ReactElement } from "react";
 
-interface SocialLinksProps {
+interface SocialLinkProps extends Omit<IconButtonProps, "icon"> {
   url: string;
-  icon: IconType;
-  color?: string;
-  size?: string;
-  _hover?: {
-    color: string;
-  };
+  arialLabel?: string;
+  icon: ReactElement;
 }
 
-export const SocialLinks: React.FC<SocialLinksProps> = ({
+export const SocialLinks: React.FC<SocialLinkProps> = ({
   url,
-  icon: Icon,
-  color,
-  size,
-  _hover,
+  icon,
+  ...restProps
 }) => (
-  <ChakraLink
-    href={url}
-    isExternal
-    color={color}
-    _hover={_hover ? { color: _hover.color } : undefined}
-  >
-    <Icon size={size} />
+  <ChakraLink href={url} isExternal>
+    <IconButton arialLabel="Social Link" icon={icon} {...restProps} />
   </ChakraLink>
 );
