@@ -12,7 +12,7 @@ export const Home = () => {
       <Carrousel />
       <Map />
 
-      <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+      <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 600: 2, 900: 3 }}>
         <Masonry gutter="15px">
           {products.map((product) => (
             <ProductCard

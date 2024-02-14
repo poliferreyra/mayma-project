@@ -19,35 +19,46 @@ export const Carrousel = () => {
   return (
     <Swiper
       effect={"fade"}
-      navigation={true}
+      //navigation={true}
       grabCursor={true}
       pagination={{
         clickable: true,
       }}
-      autoplay={{ delay: 4000, disableOnInteraction: false }}
+      autoplay={{ delay: 3000, disableOnInteraction: false }}
       modules={[EffectFade, Navigation, Pagination, Autoplay]}
       className="mySwiper"
     >
       <SwiperSlide>
         <Box
           w="100%"
-          h="400px"
+          h="300px"
           bgImage={`url(${slider1})`}
           bgSize={"cover"}
+          objectFit={"cover"}
           bgPosition="top"
           display={"flex"}
           alignItems={"center"}
           justifyContent={"center"}
         >
           <Box>
-            <Heading lineHeight="1.2">
-              <Text as="mark" bg={"rgba(0, 0, 0, 0.5)"} color="white">
+            <Heading lineHeight={{ base: "0", md: "1" }}>
+              <Text
+                as="mark"
+                bg={"rgba(0, 0, 0, 0.5)"}
+                color="white"
+                fontSize={{ base: "md", md: "3xl" }}
+              >
                 Buscamos proyectos innovadores
               </Text>
             </Heading>
             <br />
-            <Heading lineHeight="0.3">
-              <Text as="mark" bg={"rgba(0, 0, 0, 0.5)"} color="white">
+            <Heading lineHeight={{ base: "0", md: "1" }}>
+              <Text
+                as="mark"
+                bg={"rgba(0, 0, 0, 0.5)"}
+                color="white"
+                fontSize={{ base: "md", md: "3xl" }}
+              >
                 de salud física y mental
               </Text>
             </Heading>
@@ -56,7 +67,7 @@ export const Carrousel = () => {
               to="https://mayma.lat/salud"
               target="_blank"
               rel="noopener noreferrer"
-              size="lg"
+              size={{ base: "sm", md: "md" }}
               bg="#d43f3a"
               mt="24px"
               color="white"
@@ -71,23 +82,34 @@ export const Carrousel = () => {
       <SwiperSlide>
         <Box
           w="100%"
-          h="400px"
+          h="300px"
           bgImage={`url(${slider2})`}
           bgSize={"cover"}
+          objectFit={"cover"}
           bgPosition="center"
           display={"flex"}
           alignItems={"center"}
           justifyContent={"center"}
         >
           <Box>
-            <Heading lineHeight="1">
-              <Text as="mark" bgColor={"rgba(0, 0, 0, 0.5)"} color="white">
+            <Heading lineHeight={{ base: "0", md: "1" }}>
+              <Text
+                as="mark"
+                bgColor={"rgba(0, 0, 0, 0.5)"}
+                color="white"
+                fontSize={{ base: "sm", md: "lg", lg: "3xl" }}
+              >
                 Hace 17 años fortalecemos emprendedores
               </Text>
             </Heading>
             <br />
-            <Heading lineHeight="0.5">
-              <Text as="mark" bgColor={"rgba(0, 0, 0, 0.5)"} color="white">
+            <Heading lineHeight={{ base: "0", md: "0.5" }}>
+              <Text
+                as="mark"
+                bgColor={"rgba(0, 0, 0, 0.5)"}
+                color="white"
+                fontSize={{ base: "sm", md: "lg", lg: "3xl" }}
+              >
                 socioambientales de Lationoamérica
               </Text>
             </Heading>
@@ -96,7 +118,7 @@ export const Carrousel = () => {
               to="https://mayma.org.ar/hablemos?_gl=1*6so4g2*_ga*MTk0NzQ0ODMyLjE3MDcxNjEyMzU.*_ga_JZ7CXM01CB*MTcwNzIyNjk4NC4yLjEuMTcwNzIyODQxMC4wLjAuMA.."
               target="_blank"
               rel="noopener noreferrer"
-              size="lg"
+              size={{ base: "sm", md: "md" }}
               bg="#0A78E4"
               color="white"
               mt="24px"
