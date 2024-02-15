@@ -17,6 +17,6 @@ export const SocialLinks: React.FC<SocialLinkProps> = ({
   ...restProps
 }) => (
   <ChakraLink href={url} isExternal>
-    <IconButton arialLabel="Social Link" icon={icon} {...restProps} />
+    <IconButton ariallabel="Social Link" icon={icon} {...restProps} />
   </ChakraLink>
 );

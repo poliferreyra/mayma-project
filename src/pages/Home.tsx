@@ -1,9 +1,12 @@
 import { Container } from "@chakra-ui/react";
+// import { useQuery } from "react-query";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 import { Map } from "@/components/googleMaps/Map";
 import { ProductCard } from "@/components/ProductCard";
 import { Carrousel } from "@/components/swiper/Carrousel";
+// import { getData } from "@/services/product.service";
+// import { Product } from "@/types";
 import { products } from "@/services/products";
 
 export const Home = () => {
