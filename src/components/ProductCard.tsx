@@ -10,32 +10,39 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
+import enBuenasManos from "@/assets/enBuenasManos.png";
+import { Product } from "@/types";
+
 interface ProductCardProps {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
+  product: Product;
 }
 
-export const ProductCard = (props: ProductCardProps) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const {
+    title,
+    id,
+    //photo_path: img,
+    short_description: shortDescription,
+  } = product;
   return (
     <Card boxShadow="lg" borderRadius={"2xl"}>
       <Image
-        src={props.image}
-        alt={props.title}
+        src={enBuenasManos}
+        alt={title}
         borderTopRadius={"2xl"}
         height={"171px"}
         objectFit={"cover"}
       />
       <CardBody>
         <Stack mt="6" spacing="3">
-          <Heading size="md">{props.title}</Heading>
-          <Text>{props.description}</Text>
+          <Heading size="md">{title}</Heading>
+          {/* dangerouslySetInnerHTML para renderizar la descripción HTML */}
+          <Text dangerouslySetInnerHTML={{ __html: shortDescription }} />
         </Stack>
         <Divider mt={3} />
         <Button
           as={Link}
-          to={`/details/${props.id}`}
+          to={`/details/${id}`}
           variant="ghost"
           colorScheme="blue"
         >
