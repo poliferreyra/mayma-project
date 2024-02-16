@@ -5,6 +5,7 @@ import {
   Divider,
   Heading,
   Image,
+  Spacer,
   Stack,
   Text,
 } from "@chakra-ui/react";
@@ -23,6 +24,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     id,
     //photo_path: img,
     short_description: shortDescription,
+    entity,
   } = product;
   return (
     <Card boxShadow="lg" borderRadius={"2xl"}>
@@ -40,14 +42,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <Text dangerouslySetInnerHTML={{ __html: shortDescription }} />
         </Stack>
         <Divider mt={3} />
-        <Button
-          as={Link}
-          to={`/details/${id}`}
-          variant="ghost"
-          colorScheme="blue"
-        >
-          Ver detalle
-        </Button>
+
+        <Stack mt="6" direction="row" align={"center"}>
+          <Heading size="sm">{entity.fantasy_name}</Heading>
+          <Spacer />
+          <Button
+            size="md"
+            as={Link}
+            to={`/details/${id}`}
+            variant="ghost"
+            colorScheme="blue"
+          >
+            Ver detalle
+          </Button>
+        </Stack>
       </CardBody>
     </Card>
   );
