@@ -31,18 +31,23 @@ export const ProductDetail = () => {
   if (isError) return <Text>Error fetching data</Text>;
   if (!product) return <Text>No data available</Text>;
 
+  const mapMarkups = {
+    lat: entity?.location_lat || 0,
+    lng: entity?.location_lng || 0,
+  };
+
   return (
     <Container maxW={"1200"} mt={5}>
       {product ? (
         <Stack>
-          <Map />
+          <Map markups={mapMarkups} />
           <Box bg="red.200">
             <Heading>{product.title}</Heading>
           </Box>
           <Box>
             <Card bg="green.200">
               <CardHeader>
-                <Heading size="md">Sobre Nosotros</Heading>
+                <Heading size="sm">Sobre Nosotros</Heading>
               </CardHeader>
 
               <CardBody>
