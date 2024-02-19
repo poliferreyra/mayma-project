@@ -15,10 +15,15 @@ export const Home = () => {
   if (isError) return <Text>Error fetching data</Text>;
   if (!products) return <Text>No data available</Text>;
 
+  const mapMarkups = {
+    lat: -34.6037,
+    lng: -58.3816,
+  };
+
   return (
     <Container maxW={"1200"} mt={5}>
       <Carrousel />
-      <Map />
+      <Map markups={mapMarkups} />
 
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 600: 2, 900: 3 }}>
         <Masonry gutter="15px">
