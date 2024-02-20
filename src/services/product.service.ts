@@ -1,4 +1,4 @@
-import { Product, Response, ResponseProduct } from "@/types";
+import { MetaValues, Product, Response, ResponseProduct } from "@/types";
 import { api } from "@/utils/axios";
 
 export const getProductById = async (id: string) => {
@@ -6,9 +6,21 @@ export const getProductById = async (id: string) => {
   return data.data;
 };
 
-export const getData = async () => {
-  const { data } = await api.get<Response<Product[]>>("catalogs");
-
+export const getData = async ({
+  page,
+  title,
+  description,
+  productTypes,
+}: MetaValues) => {
+  const { data } = await api.get<Response<Product[]>>("catalogs", {
+    params: {
+      "page[number]": page,
+      "filter[withTitle]": title,
+      "filter[withDescription]": description,
+      "filter[product_types]": productTypes,
+      "filter[networks]": 5, // Mayma
+    },
+  });
   console.log(data);
   return data;
 };

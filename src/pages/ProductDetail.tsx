@@ -14,7 +14,7 @@ import {
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 
-import { Map } from "@/components/googleMaps/Map";
+import GoogleMap from "@/components/googleMaps/GoogleMap";
 import { getProductById } from "@/services/product.service";
 
 export const ProductDetail = () => {
@@ -31,7 +31,17 @@ export const ProductDetail = () => {
   if (isError) return <Text>Error fetching data</Text>;
   if (!product) return <Text>No data available</Text>;
 
-  const mapMarkups = {
+  const productsEntity = [
+    {
+      id: Number(id),
+      bussinessName: entity?.bussiness_name,
+      fantasyName: entity?.fantasy_name,
+      lat: entity?.location_lat || 0,
+      lng: entity?.location_lng || 0,
+    },
+  ];
+
+  const center = {
     lat: entity?.location_lat || 0,
     lng: entity?.location_lng || 0,
   };
@@ -40,7 +50,7 @@ export const ProductDetail = () => {
     <Container maxW={"1200"} mt={5}>
       {product ? (
         <Stack>
-          <Map markups={mapMarkups} />
+          <GoogleMap markers={productsEntity} center={center} />
           <Box bg="red.200">
             <Heading>{product.title}</Heading>
           </Box>
