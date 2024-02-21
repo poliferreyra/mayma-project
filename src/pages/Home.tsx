@@ -38,7 +38,7 @@ export const Home = () => {
   }, [meta, searchParams]);
 
   // Calcula la cantidad de paginas
-  const calcTotalPage = meta.to / 9;
+  const calcTotalPage = Math.ceil(meta.to / 9);
   console.log(calcTotalPage);
 
   if (isLoading) return <Text>Loading...</Text>;
