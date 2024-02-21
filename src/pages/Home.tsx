@@ -1,26 +1,40 @@
 import { Container, Text } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import { useSearchParams } from "react-router-dom";
 
 import GoogleMap from "@/components/googleMaps/GoogleMap";
+import { Pagination } from "@/components/Pagination";
 import { ProductCard } from "@/components/ProductCard";
 import { Carrousel } from "@/components/swiper/Carrousel";
 import { getData } from "@/services/product.service";
 import { Product } from "@/types";
 
 export const Home = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const [meta, setMeta] = useState({
+    page: Number(searchParams.get("page")) || 1,
+    title: "",
+    description: "",
+    productTypes: "",
+  });
+
   const {
     data: products,
     isLoading,
     isError,
-  } = useQuery(["products"], () =>
-    getData({
-      page: 2,
-      title: "",
-      description: "",
-      productTypes: "",
-    })
-  );
+  } = useQuery(["products", meta], () => getData(meta));
+
+  useEffect(() => {
+    const upDateParams = {
+      page: meta.page.toString(),
+    };
+
+    setSearchParams(upDateParams);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [meta, searchParams]);
 
   if (isLoading) return <Text>Loading...</Text>;
   if (isError) return <Text>Error fetching data</Text>;
@@ -50,6 +64,7 @@ export const Home = () => {
           ))}
         </Masonry>
       </ResponsiveMasonry>
+      <Pagination page={meta.page} meta={meta} setMeta={setMeta} />
     </Container>
   );
 };
