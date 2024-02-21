@@ -19,6 +19,7 @@ export const Home = () => {
     title: "",
     description: "",
     productTypes: "",
+    to: 18,
   });
 
   const {
@@ -35,6 +36,10 @@ export const Home = () => {
     setSearchParams(upDateParams);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [meta, searchParams]);
+
+  // Calcula la cantidad de paginas
+  const calcTotalPage = meta.to / 9;
+  console.log(calcTotalPage);
 
   if (isLoading) return <Text>Loading...</Text>;
   if (isError) return <Text>Error fetching data</Text>;
@@ -64,7 +69,12 @@ export const Home = () => {
           ))}
         </Masonry>
       </ResponsiveMasonry>
-      <Pagination page={meta.page} meta={meta} setMeta={setMeta} />
+      <Pagination
+        page={meta.page}
+        totalPage={calcTotalPage}
+        meta={meta}
+        setMeta={setMeta}
+      />
     </Container>
   );
 };
