@@ -1,8 +1,15 @@
-import { Container, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Card,
+  CardFooter,
+  Container,
+  Heading,
+  Text,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import GoogleMap from "@/components/googleMaps/GoogleMap";
 import { Pagination } from "@/components/Pagination";
@@ -13,13 +20,13 @@ import { Product } from "@/types";
 
 export const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const [meta, setMeta] = useState({
     page: Number(searchParams.get("page")) || 1,
     title: "",
     description: "",
     productTypes: "",
-    to: 18,
   });
 
   const {
@@ -37,9 +44,14 @@ export const Home = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [meta, searchParams]);
 
-  // Calcula la cantidad de paginas
-  const calcTotalPage = Math.ceil(meta.to / 9);
-  console.log(calcTotalPage);
+  const handleBackToInit = () => {
+    navigate("/", { state: { page: 1 } }); // Esto navega a la ruta "/" y pasa { page: 1 } como estado
+    const updatedMeta = {
+      ...meta,
+      page: 1, // Actualizas la página en el estado local
+    };
+    setMeta(updatedMeta);
+  };
 
   if (isLoading) return <Text>Loading...</Text>;
   if (isError) return <Text>Error fetching data</Text>;
@@ -62,6 +74,23 @@ export const Home = () => {
       <Carrousel />
       <GoogleMap markers={productsEntities} center={center} />
 
+      {/* No hay mas productos/servicios para mostrar */}
+      {products.data.length === 0 && (
+        <Card align="center" mt={5} p={9}>
+          <Heading size="md"> No hay productos y/o servicios</Heading>
+          <CardFooter>
+            <Button
+              size="md"
+              onClick={handleBackToInit}
+              color="white"
+              bg="#d43f3a"
+            >
+              Volver al inicio
+            </Button>
+          </CardFooter>
+        </Card>
+      )}
+
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 600: 2, 900: 3 }}>
         <Masonry gutter="15px">
           {products.data.map((product: Product) => (
@@ -69,12 +98,11 @@ export const Home = () => {
           ))}
         </Masonry>
       </ResponsiveMasonry>
-      <Pagination
-        page={meta.page}
-        totalPage={calcTotalPage}
-        meta={meta}
-        setMeta={setMeta}
-      />
+
+      {/* Se esconde paginado si no hay productos/servicios */}
+      {products.data.length !== 0 && (
+        <Pagination page={meta.page} meta={meta} setMeta={setMeta} />
+      )}
     </Container>
   );
 };

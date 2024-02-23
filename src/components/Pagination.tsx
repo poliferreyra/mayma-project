@@ -6,20 +6,18 @@ export interface Values {
   title: string;
   description: string;
   productTypes: string;
-  to: number;
 }
 
 interface PaginationProps {
   page: number;
   meta: Values;
-  totalPage: number;
+
   setMeta: React.Dispatch<React.SetStateAction<Values>>;
 }
 
 export const Pagination: React.FC<PaginationProps> = ({
   page,
   meta,
-  totalPage,
   setMeta,
 }) => {
   const handlePrevPage = () => {
@@ -50,7 +48,6 @@ export const Pagination: React.FC<PaginationProps> = ({
         rightIcon={<FaChevronRight />}
         variant="outline"
         onClick={handleNextPage}
-        isDisabled={page === totalPage}
       ></Button>
     </HStack>
   );

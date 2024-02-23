@@ -4,7 +4,6 @@ import {
   CardBody,
   CardHeader,
   Container,
-  Divider,
   Heading,
   Stack,
   StackDivider,
@@ -76,19 +75,23 @@ export const ProductDetail = () => {
               </CardBody>
             </Card>
           </Box>
-          <Box bg="yellow.200">
-            <Text> {entity?.fantasy_name}</Text>
-            <Divider m="4" />
-            <Text> {entity?.address}</Text>
-            <Text> {entity?.type.name}</Text>
+          <Box>
+            <Card bg="yellow.200">
+              <CardBody>
+                <Stack divider={<StackDivider />} spacing="4">
+                  <Box>
+                    <Text> {entity?.fantasy_name}</Text>
+                  </Box>
+                  <Box>
+                    <Text> {entity?.address}</Text>
+                    <Text> {entity?.type.name}</Text>
+                  </Box>
+                </Stack>
+              </CardBody>
+            </Card>
           </Box>
         </Stack>
       ) : (
-        // <Box>
-        //   <Heading>{product.title}</Heading>
-        //   <Image src={enBuenasManos} alt={product.title} />
-        //   <Text dangerouslySetInnerHTML={{ __html: product.description }} />
-        // </Box>
         <Box>No se encontró el producto</Box>
       )}
     </Container>
