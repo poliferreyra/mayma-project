@@ -11,6 +11,7 @@ import { useQuery } from "react-query";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
+import { Filter } from "@/components/Filter";
 import GoogleMap from "@/components/googleMaps/GoogleMap";
 import { Pagination } from "@/components/Pagination";
 import { ProductCard } from "@/components/ProductCard";
@@ -73,6 +74,9 @@ export const Home = () => {
     <Container maxW={"1200"} mt={5}>
       <Carrousel />
       <GoogleMap markers={productsEntities} center={center} />
+      
+      {/* Si no hay mas productos/servicios no muestra filtros */}
+      {products.data.length !== 0 && <Filter />}
 
       {/* No hay mas productos/servicios para mostrar */}
       {products.data.length === 0 && (
@@ -83,6 +87,7 @@ export const Home = () => {
               size="md"
               onClick={handleBackToInit}
               color="white"
+              borderRadius="20px"
               bg="#d43f3a"
             >
               Volver al inicio
