@@ -74,9 +74,9 @@ export const Home = () => {
     <Container maxW={"1200"} mt={5}>
       <Carrousel />
       <GoogleMap markers={productsEntities} center={center} />
-      
+
       {/* Si no hay mas productos/servicios no muestra filtros */}
-      {products.data.length !== 0 && <Filter />}
+      {products.data.length !== 0 && <Filter meta={meta} setMeta={setMeta} />}
 
       {/* No hay mas productos/servicios para mostrar */}
       {products.data.length === 0 && (
