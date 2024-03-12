@@ -25,9 +25,9 @@ export const Home = () => {
 
   const [meta, setMeta] = useState({
     page: Number(searchParams.get("page")) || 1,
-    title: "",
-    description: "",
-    productTypes: "",
+    title: searchParams.get("title") || "",
+    description: searchParams.get("description") || "",
+    productTypes: searchParams.get("productTypes") || "",
   });
 
   const {
@@ -37,19 +37,35 @@ export const Home = () => {
   } = useQuery(["products", meta], () => getData(meta));
 
   useEffect(() => {
-    const upDateParams = {
+    const upDatedParams: { [key: string]: string } = {
       page: meta.page.toString(),
     };
 
-    setSearchParams(upDateParams);
+    if (meta.title) {
+      upDatedParams.title = meta.title;
+    }
+    if (meta.description) {
+      upDatedParams.description = meta.description;
+    }
+
+    if (meta.productTypes) {
+      upDatedParams.productTypes = meta.productTypes;
+    }
+
+    setSearchParams(upDatedParams);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [meta, searchParams]);
+  }, [meta]);
+
 
   const handleBackToInit = () => {
-    navigate("/", { state: { page: 1 } }); // Esto navega a la ruta "/" y pasa { page: 1 } como estado
+    navigate("/", { state: { page: 1 } }); // Esto navega a la ruta "/" y pasa { page: 1 } como estado/parametro
+
     const updatedMeta = {
       ...meta,
-      page: 1, // Actualizas la página en el estado local
+      page: 1,
+      title: "",
+      description: "",
+      productTypes: "",
     };
     setMeta(updatedMeta);
   };
