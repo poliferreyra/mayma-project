@@ -86,23 +86,15 @@ export const Filter: React.FC<FiltersProps> = ({ meta, setMeta }) => {
 
   return (
     <>
-      <Stack direction="row" mb={5} justifyContent={"end"}>
+      <Stack direction={{base:"column", sm:"row"}} mb={5} justifyContent={"end"}>
         <Button
           rightIcon={<IoClose />}
-          color="#d43f3a"
-          border="2px"
-          borderColor="#d43f3a"
           variant="outline"
           onClick={deleteFilter}
         >
           Eliminar Filtros
         </Button>
-        <Button
-          rightIcon={<IoSearchSharp />}
-          bg="#d43f3a"
-          color="white"
-          onClick={onOpen}
-        >
+        <Button rightIcon={<IoSearchSharp />} onClick={onOpen}>
           Búsqueda avanzada
         </Button>
       </Stack>

@@ -1,4 +1,4 @@
-import { Button, HStack, Tag } from "@chakra-ui/react";
+import { HStack, IconButton, Tag } from "@chakra-ui/react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export interface Values {
@@ -36,19 +36,27 @@ export const Pagination: React.FC<PaginationProps> = ({
   };
 
   return (
-    <HStack justifyContent={"center"} spacing={4} mt={9}>
-      <Button
-        leftIcon={<FaChevronLeft />}
+    <HStack justifyContent={"center"} mt={9}>
+      <IconButton
+        icon={<FaChevronLeft />}
         variant="outline"
+        color="primary.default"
+        size="sm"
+        aria-label="Prev page"
         onClick={handlePrevPage}
         isDisabled={page === 1}
-      ></Button>
-      <Tag>{page}</Tag>
-      <Button
-        rightIcon={<FaChevronRight />}
+      ></IconButton>
+      <Tag bg={"transparent"} color="primary.default" size="lg">
+        {page}
+      </Tag>
+      <IconButton
+        icon={<FaChevronRight />}
         variant="outline"
+        color="primary.default"
+        size={"sm"}
+        aria-label="Next page"
         onClick={handleNextPage}
-      ></Button>
+      ></IconButton>
     </HStack>
   );
 };

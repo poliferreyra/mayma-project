@@ -46,13 +46,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <Stack mt="6" direction="row" align={"center"}>
           <Heading size="sm">{entity.fantasy_name}</Heading>
           <Spacer />
-          <Button
-            size="md"
-            as={Link}
-            to={`/details/${id}`}
-            variant="ghost"
-            colorScheme="blue"
-          >
+          <Button as={Link} to={`/details/${id}`} variant="secondary"  size={{ base: "sm", md: "md" }}>
             Ver detalle
           </Button>
         </Stack>

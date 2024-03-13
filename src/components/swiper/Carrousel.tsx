@@ -28,6 +28,7 @@ export const Carrousel = () => {
       modules={[EffectFade, Navigation, Pagination, Autoplay]}
       className="mySwiper"
     >
+      {/* slide corazón */}
       <SwiperSlide>
         <Box
           w="100%"
@@ -46,18 +47,19 @@ export const Carrousel = () => {
                 as="mark"
                 bg={"rgba(0, 0, 0, 0.5)"}
                 color="white"
-                fontSize={{ base: "md", md: "3xl" }}
+                // fontSize={{ base: "md", md: "3xl" }}
+                fontSize={{ base: "20px", md: "30px", lg: "35px" }}
               >
                 Buscamos proyectos innovadores
               </Text>
             </Heading>
             <br />
-            <Heading lineHeight={{ base: "0", md: "1" }}>
+            <Heading lineHeight={{ base: "0.5", md: "1" }}>
               <Text
                 as="mark"
                 bg={"rgba(0, 0, 0, 0.5)"}
                 color="white"
-                fontSize={{ base: "md", md: "3xl" }}
+                fontSize={{ base: "20px", md: "30px", lg: "35px" }}
               >
                 de salud física y mental
               </Text>
@@ -68,17 +70,14 @@ export const Carrousel = () => {
               target="_blank"
               rel="noopener noreferrer"
               size={{ base: "sm", md: "md" }}
-              bg="#d43f3a"
               mt="24px"
-              color="white"
-              borderRadius="20px"
             >
               Quiero + info
             </Button>
           </Box>
         </Box>
       </SwiperSlide>
-
+      {/* slide grupo */}
       <SwiperSlide>
         <Box
           w="100%"
@@ -97,18 +96,19 @@ export const Carrousel = () => {
                 as="mark"
                 bgColor={"rgba(0, 0, 0, 0.5)"}
                 color="white"
-                fontSize={{ base: "sm", md: "lg", lg: "3xl" }}
+                fontSize={{ base: "16px", md: "30px", lg: "35px" }}
               >
                 Hace 17 años fortalecemos emprendedores
               </Text>
             </Heading>
             <br />
-            <Heading lineHeight={{ base: "0", md: "0.5" }}>
+            <Heading lineHeight={{ base: "0", md: "1" }}>
               <Text
                 as="mark"
                 bgColor={"rgba(0, 0, 0, 0.5)"}
                 color="white"
-                fontSize={{ base: "sm", md: "lg", lg: "3xl" }}
+                // fontSize={{ base: "sm", md: "lg", lg: "3xl" }}
+                fontSize={{ base: "16px", md: "30px", lg: "35px" }}
               >
                 socioambientales de Lationoamérica
               </Text>
@@ -119,10 +119,8 @@ export const Carrousel = () => {
               target="_blank"
               rel="noopener noreferrer"
               size={{ base: "sm", md: "md" }}
-              bg="#0A78E4"
-              color="white"
+              variant={"secondary"}
               mt="24px"
-              borderRadius="20px"
             >
               Hablemos
             </Button>

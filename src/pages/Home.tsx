@@ -56,7 +56,6 @@ export const Home = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [meta]);
 
-
   const handleBackToInit = () => {
     navigate("/", { state: { page: 1 } }); // Esto navega a la ruta "/" y pasa { page: 1 } como estado/parametro
 
@@ -99,15 +98,7 @@ export const Home = () => {
         <Card align="center" mt={5} p={9}>
           <Heading size="md"> No hay productos y/o servicios</Heading>
           <CardFooter>
-            <Button
-              size="md"
-              onClick={handleBackToInit}
-              color="white"
-              borderRadius="20px"
-              bg="#d43f3a"
-            >
-              Volver al inicio
-            </Button>
+            <Button onClick={handleBackToInit}>Inicio</Button>
           </CardFooter>
         </Card>
       )}

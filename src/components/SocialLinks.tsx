@@ -14,9 +14,23 @@ interface SocialLinkProps extends Omit<IconButtonProps, "icon"> {
 export const SocialLinks: React.FC<SocialLinkProps> = ({
   url,
   icon,
+  isRound = true,
+  variant = "outline",
+  border = "2px",
+  fontSize = "15px",
+  size = "sm",
   ...restProps
 }) => (
   <ChakraLink href={url} isExternal>
-    <IconButton ariallabel="Social Link" icon={icon} {...restProps} />
+    <IconButton
+      ariallabel="Social Link"
+      icon={icon}
+      {...restProps}
+      isRound={isRound}
+      variant={variant}
+      border={border}
+      fontSize={fontSize}
+      size={size}
+    />
   </ChakraLink>
 );

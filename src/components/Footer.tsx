@@ -29,7 +29,15 @@ export const Footer = () => {
     >
       <Container maxW={"1200"} pt={6}>
         <VStack gap={6}>
-          <Box boxSize={"20%"}>
+          <Box
+            boxSize={{
+              base: "40%",
+              sm: "30%",
+              md: "20%",
+              lg: "15%",
+              xl: "15%",
+            }}
+          >
             <Image objectFit="cover" src={logo} alt="logo Mayma" />
           </Box>
 
@@ -37,63 +45,38 @@ export const Footer = () => {
           <SimpleGrid columns={5} spacing={3}>
             <SocialLinks
               url="https://wa.me/5493546565993"
-              isRound={true}
-              variant="outline"
-              border={"2px"}
               color="#9E9E9E"
-              size='sm'
-              fontSize="15px"
               icon={<FaWhatsapp />}
               _hover={{ color: "#1AD03F" }}
-              aria-label={""}
+              aria-label={"Watsapp logo"}
             />
             <SocialLinks
               url="https://www.instagram.com/comunidadmayma/"
-              isRound={true}
-              variant="outline"
-              border={"2px"}
               color="#9E9E9E"
-              size='sm'
-              fontSize="15px"
               icon={<FaInstagram />}
               _hover={{ color: "#F70593" }}
-              aria-label={""}
+              aria-label={"instagram logo"}
             />
             <SocialLinks
               url="https://www.facebook.com/ComunidadMayma/"
-              isRound={true}
-              variant="outline"
-              border={"2px"}
               color="#9E9E9E"
-              size='sm'
-              fontSize="15px"
               icon={<FaFacebook />}
               _hover={{ color: "#1773EA" }}
-              aria-label={""}
+              aria-label={"Facebook logo"}
             />
             <SocialLinks
               url="https://www.linkedin.com/company/programa-mayma/"
-              isRound={true}
-              variant="outline"
-              border={"2px"}
               color="#9E9E9E"
-              size='sm'
-              fontSize="15px"
               icon={<FaLinkedin />}
               _hover={{ color: "#0073B1" }}
-              aria-label={""}
+              aria-label={"Linkedin logo"}
             />
             <SocialLinks
               url="https://www.linkedin.com/company/programa-mayma/"
-              isRound={true}
-              variant="outline"
-              border={"2px"}
               color="#9E9E9E"
-              size='sm'
-              fontSize="15px"
               icon={<FaYoutube />}
               _hover={{ color: "#F70000" }}
-              aria-label={""}
+              aria-label={"Youtube logo"}
             />
           </SimpleGrid>
           <Box>
@@ -102,22 +85,7 @@ export const Footer = () => {
         </VStack>
       </Container>
 
-      <Container maxW={"1200"} py={6}>
-        {/* <Flex justifyContent="space-between">
-          <Box>
-            <Text color={"#9E9E9E"}>© 2017 Todos los derechos reservados</Text>
-          </Box>
-          <Box>
-            <Link
-              color={"#9E9E9E"}
-              href="https://mayma.org.ar/terminos-y-condiciones-programa-mayma2021?_gl=1*prqus4*_ga*MTQ2MDM1MDI4Mi4xNzA1Njc5NzUx*_ga_JZ7CXM01CB*MTcwNjAyMDMzNS4yLjEuMTcwNjAyMjEwMS4wLjAuMA.."
-              isExternal
-            >
-              Términos y Condiciones
-            </Link>
-          </Box>
-        </Flex> */}
-      </Container>
+      <Container maxW={"1200"} py={6}></Container>
     </Stack>
   );
 };
