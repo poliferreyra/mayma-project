@@ -39,8 +39,6 @@ const initFormValues = {
 
 const options = [
   { value: "producto", label: "Producto" },
-  { value: "proyecto", label: "Proyecto" },
-  { value: "recurso", label: "Recurso" },
   { value: "servicio", label: "Servicio" },
 ];
 export const Filter: React.FC<FiltersProps> = ({ meta, setMeta }) => {
@@ -54,7 +52,7 @@ export const Filter: React.FC<FiltersProps> = ({ meta, setMeta }) => {
   const handleFilter = (e: ChangeEvent<HTMLInputElement>) => {
     setFilterValue({ ...filterValue, [e.target.name]: e.target.value });
   };
-  console.log(filterValue);
+  //console.log(filterValue);
 
   const handleSelectChange = (selectedOptions: MultiValue<Option>) => {
     setFilterValue({
@@ -63,13 +61,24 @@ export const Filter: React.FC<FiltersProps> = ({ meta, setMeta }) => {
     });
   };
 
+  const deleteFilter = () => {
+    setMeta({
+      page: 1,
+      title: "",
+      description: "",
+      productTypes: "",
+    });
+  };
+
   const handleSubmit = () => {
     const updatedMeta = {
       ...meta,
       title: filterValue.title,
       description: filterValue.description,
-      productTypes: filterValue.productTypes.map(option => option.value).join(","),
-      page: 1 
+      productTypes: filterValue.productTypes
+        .map((option) => option.value)
+        .join(","),
+      page: 1,
     };
     setMeta(updatedMeta);
     onClose();
@@ -78,6 +87,16 @@ export const Filter: React.FC<FiltersProps> = ({ meta, setMeta }) => {
   return (
     <>
       <Stack direction="row" mb={5} justifyContent={"end"}>
+        <Button
+          rightIcon={<IoClose />}
+          color="#d43f3a"
+          border="2px"
+          borderColor="#d43f3a"
+          variant="outline"
+          onClick={deleteFilter}
+        >
+          Eliminar Filtros
+        </Button>
         <Button
           rightIcon={<IoSearchSharp />}
           bg="#d43f3a"
