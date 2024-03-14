@@ -5,7 +5,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./styles.css";
 
-import { Box, Button, Heading, Text } from "@chakra-ui/react";
+import { Box, Button, Heading, Highlight } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 // import required modules
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
@@ -42,27 +42,46 @@ export const Carrousel = () => {
           justifyContent={"center"}
         >
           <Box>
-            <Heading lineHeight={{ base: "0", md: "1" }}>
+            <Heading
+              lineHeight={{ base: "0", md: "1" }}
+              fontSize={{ base: "14px", md: "30px", lg: "35px" }}
+            >
+              <Highlight
+                query="proyectos innovadores"
+                styles={{
+                  bg: "primary.default",
+                  color: "white",
+                  px: "1",
+                  rounded: "5px",
+                }}
+              >
+                Buscamos proyectos innovadores
+              </Highlight>
+            </Heading>
+            {/* <Heading lineHeight={{ base: "0", md: "1" }}>
               <Text
                 as="mark"
                 bg={"rgba(0, 0, 0, 0.5)"}
                 color="white"
-                // fontSize={{ base: "md", md: "3xl" }}
-                fontSize={{ base: "20px", md: "30px", lg: "35px" }}
+                fontSize={{ base: "14px", md: "30px", lg: "35px" }}
               >
                 Buscamos proyectos innovadores
               </Text>
-            </Heading>
+            </Heading> */}
             <br />
-            <Heading lineHeight={{ base: "0.5", md: "1" }}>
-              <Text
+            <Heading
+              lineHeight={{ base: "0", md: "1" }}
+              fontSize={{ base: "14px", md: "30px", lg: "35px" }}
+            >
+              de salud física y mental
+              {/* <Text
                 as="mark"
                 bg={"rgba(0, 0, 0, 0.5)"}
                 color="white"
-                fontSize={{ base: "20px", md: "30px", lg: "35px" }}
+                fontSize={{ base: "14px", md: "30px", lg: "35px" }}
               >
                 de salud física y mental
-              </Text>
+              </Text> */}
             </Heading>
             <Button
               as={Link}
@@ -91,27 +110,48 @@ export const Carrousel = () => {
           justifyContent={"center"}
         >
           <Box>
-            <Heading lineHeight={{ base: "0", md: "1" }}>
+            <Heading
+              lineHeight={{ base: "0", md: "1" }}
+              color="white"
+              fontSize={{ base: "14px", md: "30px", lg: "35px" }}
+            >
+              <Highlight
+                query="fortalecemos emprendedores"
+                styles={{
+                  bg: "secondary.default",
+                  color: "white",
+                  px: "1",
+                  rounded: "5px",
+                }}
+              >
+                Hace 17 años fortalecemos emprendedores
+              </Highlight>
+            </Heading>
+            {/* <Heading lineHeight={{ base: "0", md: "1" }}>
               <Text
                 as="mark"
                 bgColor={"rgba(0, 0, 0, 0.5)"}
                 color="white"
-                fontSize={{ base: "16px", md: "30px", lg: "35px" }}
+                fontSize={{ base: "14px", md: "30px", lg: "35px" }}
               >
                 Hace 17 años fortalecemos emprendedores
               </Text>
-            </Heading>
+            </Heading> */}
             <br />
-            <Heading lineHeight={{ base: "0", md: "1" }}>
-              <Text
+            <Heading
+              lineHeight={{ base: "0", md: "1" }}
+              color="white"
+              fontSize={{ base: "14px", md: "30px", lg: "35px" }}
+            >
+              socioambientales de Lationoamérica
+              {/* <Text
                 as="mark"
                 bgColor={"rgba(0, 0, 0, 0.5)"}
                 color="white"
-                // fontSize={{ base: "sm", md: "lg", lg: "3xl" }}
-                fontSize={{ base: "16px", md: "30px", lg: "35px" }}
+                fontSize={{ base: "14px", md: "30px", lg: "35px" }}
               >
                 socioambientales de Lationoamérica
-              </Text>
+              </Text> */}
             </Heading>
             <Button
               as={Link}

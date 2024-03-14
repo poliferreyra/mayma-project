@@ -6,7 +6,7 @@ import {
 import { ReactElement } from "react";
 
 interface SocialLinkProps extends Omit<IconButtonProps, "icon"> {
-  url: string;
+  url?: string;
   arialLabel?: string;
   icon: ReactElement;
 }

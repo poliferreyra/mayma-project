@@ -86,14 +86,21 @@ export const Filter: React.FC<FiltersProps> = ({ meta, setMeta }) => {
 
   return (
     <>
-      <Stack direction={{base:"column", sm:"row"}} mb={5} justifyContent={"end"}>
-        <Button
-          rightIcon={<IoClose />}
-          variant="outline"
-          onClick={deleteFilter}
-        >
-          Eliminar Filtros
-        </Button>
+      <Stack
+        direction={{ base: "column", sm: "row" }}
+        mb={5}
+        justifyContent={"end"}
+      >
+        {(meta.title || meta.description || meta.productTypes) && (
+          <Button
+            rightIcon={<IoClose />}
+            variant="outline"
+            onClick={deleteFilter}
+          >
+            Eliminar Filtros
+          </Button>
+        )}
+
         <Button rightIcon={<IoSearchSharp />} onClick={onOpen}>
           Búsqueda avanzada
         </Button>
