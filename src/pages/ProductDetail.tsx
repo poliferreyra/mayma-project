@@ -20,6 +20,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import GoogleMap from "@/components/googleMaps/GoogleMap";
+import { SkeletonDetail } from "@/components/SkeletonDetail";
 import { SocialLinks } from "@/components/SocialLinks";
 import { getProductById } from "@/services/product.service";
 
@@ -33,9 +34,9 @@ export const ProductDetail = () => {
   } = useQuery(["product", id], () => getProductById(id ?? ""));
   const entity = product?.entity;
 
-  if (isLoading) return <Text>Loading...</Text>;
+  // if (isLoading) return <Text>Loading...</Text>;
   if (isError) return <Text>Error fetching data</Text>;
-  if (!product) return <Text>No data available</Text>;
+  // if (!product) return <Text>No data available</Text>;
 
   const productsEntity = [
     {
@@ -60,11 +61,13 @@ export const ProductDetail = () => {
           <Text> Volver</Text>
         </HStack>
       </Link>
-      {product ? (
+      {isLoading ? (
+        <SkeletonDetail />
+      ) : (
         <Stack>
           <GoogleMap markers={productsEntity} center={center} />
 
-          <Heading>{product.title}</Heading>
+          <Heading size={{ base: "md", md: "lg" }}>{product?.title}</Heading>
 
           {/* Sobre nosotros */}
           <Card>
@@ -74,7 +77,7 @@ export const ProductDetail = () => {
             <CardBody>
               <Stack divider={<StackDivider />} spacing="4">
                 <Box>
-                  <Text pt="2" fontSize="sm">
+                  <Text pt="2" fontSize="md">
                     {entity?.about_us}
                   </Text>
                 </Box>
@@ -85,7 +88,7 @@ export const ProductDetail = () => {
                   color="primary.default"
                   border="1px"
                 >
-                  {product.product_type}
+                  {product?.product_type}
                 </Tag>
               </Stack>
             </CardBody>
@@ -120,8 +123,6 @@ export const ProductDetail = () => {
             </CardBody>
           </Card>
         </Stack>
-      ) : (
-        <Box>No se encontró el producto</Box>
       )}
     </Container>
   );

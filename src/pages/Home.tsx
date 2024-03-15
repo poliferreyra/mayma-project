@@ -1,9 +1,11 @@
 import {
+  Box,
   Button,
   Card,
   CardFooter,
   Container,
   Heading,
+  Skeleton,
   Text,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
@@ -15,9 +17,11 @@ import { Filter } from "@/components/Filter";
 import GoogleMap from "@/components/googleMaps/GoogleMap";
 import { Pagination } from "@/components/Pagination";
 import { ProductCard } from "@/components/ProductCard";
+import { SkeletonCard } from "@/components/SkeletonCard";
 import { Carrousel } from "@/components/swiper/Carrousel";
 import { getData } from "@/services/product.service";
 import { Product } from "@/types";
+import { createArray } from "@/utils/utils";
 
 export const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -69,11 +73,11 @@ export const Home = () => {
     setMeta(updatedMeta);
   };
 
-  if (isLoading) return <Text>Loading...</Text>;
+  // if (isLoading) return <Text>Loading...</Text>;
   if (isError) return <Text>Error fetching data</Text>;
-  if (!products) return <Text>No data available</Text>;
+  // if (!products) return <Text>No data available</Text>;
 
-  const productsEntities = products.data.map((product) => {
+  const productsEntities = products?.data.map((product) => {
     return {
       id: product.entity.id,
       bussinessName: product.entity.bussiness_name,
@@ -87,14 +91,20 @@ export const Home = () => {
 
   return (
     <Container maxW={"1200"} mt={5}>
-      <Carrousel />
+      {isLoading ? (
+        <Skeleton >
+          <Box w="100%" h={"300px"} />
+        </Skeleton>
+      ) : (
+        <Carrousel />
+      )}
       <GoogleMap markers={productsEntities} center={center} />
 
       {/* Si no hay mas productos/servicios no muestra filtros */}
-      {products.data.length !== 0 && <Filter meta={meta} setMeta={setMeta} />}
+      {products?.data.length !== 0 && <Filter meta={meta} setMeta={setMeta} isLoading={isLoading} />}
 
       {/* No hay mas productos/servicios para mostrar */}
-      {products.data.length === 0 && (
+      {products?.data.length === 0 && (
         <Card align="center" mt={5} p={9}>
           <Heading size="md"> No hay productos y/o servicios</Heading>
           <CardFooter>
@@ -105,14 +115,16 @@ export const Home = () => {
 
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 600: 2, 900: 3 }}>
         <Masonry gutter="15px">
-          {products.data.map((product: Product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          {isLoading
+            ? createArray(9).map((e) => <SkeletonCard key={e} />)
+            : products?.data.map((product: Product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
         </Masonry>
       </ResponsiveMasonry>
 
       {/* Se esconde paginado si no hay productos/servicios */}
-      {products.data.length !== 0 && (
+      {products?.data.length !== 0 && (
         <Pagination page={meta.page} meta={meta} setMeta={setMeta} />
       )}
     </Container>

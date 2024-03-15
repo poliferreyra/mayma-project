@@ -10,6 +10,7 @@ import {
   DrawerOverlay,
   FormLabel,
   Input,
+  Skeleton,
   Stack,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -23,6 +24,7 @@ import { MetaValues } from "@/types";
 interface FiltersProps {
   meta: MetaValues;
   setMeta: React.Dispatch<React.SetStateAction<MetaValues>>;
+  isLoading: boolean;
 }
 
 interface FormValues {
@@ -41,7 +43,11 @@ const options = [
   { value: "producto", label: "Producto" },
   { value: "servicio", label: "Servicio" },
 ];
-export const Filter: React.FC<FiltersProps> = ({ meta, setMeta }) => {
+export const Filter: React.FC<FiltersProps> = ({
+  meta,
+  setMeta,
+  isLoading,
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [filterValue, setFilterValue] = useState<FormValues>({
@@ -101,9 +107,15 @@ export const Filter: React.FC<FiltersProps> = ({ meta, setMeta }) => {
           </Button>
         )}
 
-        <Button rightIcon={<IoSearchSharp />} onClick={onOpen}>
-          Búsqueda avanzada
-        </Button>
+        {isLoading ? (
+          <Skeleton borderRadius="10px">
+            <Button size={"lg"}>Busqueda avanzada+icon</Button>
+          </Skeleton>
+        ) : (
+          <Button rightIcon={<IoSearchSharp />} onClick={onOpen}>
+            Búsqueda avanzada
+          </Button>
+        )}
       </Stack>
 
       <Drawer
