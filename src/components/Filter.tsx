@@ -68,6 +68,7 @@ export const Filter: React.FC<FiltersProps> = ({
   };
 
   const deleteFilter = () => {
+    setFilterValue({ ...initFormValues });
     setMeta({
       page: 1,
       title: "",
@@ -76,7 +77,8 @@ export const Filter: React.FC<FiltersProps> = ({
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
     const updatedMeta = {
       ...meta,
       title: filterValue.title,
@@ -97,14 +99,22 @@ export const Filter: React.FC<FiltersProps> = ({
         mb={5}
         justifyContent={"end"}
       >
-        {(meta.title || meta.description || meta.productTypes) && (
-          <Button
-            rightIcon={<IoClose />}
-            variant="outline"
-            onClick={deleteFilter}
-          >
-            Eliminar Filtros
-          </Button>
+        {(isLoading && meta.title) ||
+        (isLoading && meta.description) ||
+        (isLoading && meta.productTypes) ? (
+          <Skeleton borderRadius="10px">
+            <Button size={"lg"}>Eliminar Filtros</Button>
+          </Skeleton>
+        ) : (
+          (meta.title || meta.description || meta.productTypes) && (
+            <Button
+              rightIcon={<IoClose />}
+              variant="outline"
+              onClick={deleteFilter}
+            >
+              Eliminar Filtros
+            </Button>
+          )
         )}
 
         {isLoading ? (
