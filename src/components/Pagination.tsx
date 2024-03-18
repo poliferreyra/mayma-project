@@ -1,4 +1,5 @@
 import { HStack, IconButton, Skeleton, Tag } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export interface Values {
@@ -36,6 +37,9 @@ export const Pagination: React.FC<PaginationProps> = ({
       page: meta.page + 1,
     });
   };
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [page]);
 
   return (
     <HStack justifyContent={"center"} mt={9}>
