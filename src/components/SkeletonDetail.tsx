@@ -12,11 +12,11 @@ import {
   Tag,
 } from "@chakra-ui/react";
 
-const numberOfLines = [3, 5, 7];
+const numberOfLines = [4, 8, 12];
 
 export const SkeletonDetail = () => {
   return (
-    <Stack>
+    <Stack mt="300px">
       <SkeletonText noOfLines={1} as="span" skeletonHeight="6" width="80%" />
 
       {/* Sobre nosotros */}

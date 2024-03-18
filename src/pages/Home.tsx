@@ -1,4 +1,6 @@
 import {
+  Alert,
+  AlertTitle,
   Box,
   Button,
   Card,
@@ -6,9 +8,10 @@ import {
   Container,
   Heading,
   Skeleton,
-  Text,
+  Stack,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { MdRunningWithErrors } from "react-icons/md";
 import { useQuery } from "react-query";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -74,7 +77,22 @@ export const Home = () => {
   };
 
   // if (isLoading) return <Text>Loading...</Text>;
-  if (isError) return <Text>Error fetching data</Text>;
+  if (isError)
+    return (
+      <Stack
+        h={"100vh"}
+        color="white"
+        justifyContent="center"
+        alignContent="center"
+      >
+        <Alert status="error" bg={"primary.default"} height="100px">
+          <MdRunningWithErrors size="30px" />
+          <AlertTitle ml={4} fontSize="lg">
+            Error al recuperar datos
+          </AlertTitle>
+        </Alert>
+      </Stack>
+    );
   // if (!products) return <Text>No data available</Text>;
 
   const productsEntities = products?.data.map((product) => {
@@ -92,16 +110,19 @@ export const Home = () => {
   return (
     <Container maxW={"1200"} mt={5}>
       {isLoading ? (
-        <Skeleton >
+        <Skeleton>
           <Box w="100%" h={"300px"} />
         </Skeleton>
       ) : (
         <Carrousel />
       )}
+
       <GoogleMap markers={productsEntities} center={center} />
 
       {/* Si no hay mas productos/servicios no muestra filtros */}
-      {products?.data.length !== 0 && <Filter meta={meta} setMeta={setMeta} isLoading={isLoading} />}
+      {products?.data.length !== 0 && (
+        <Filter meta={meta} setMeta={setMeta} isLoading={isLoading} />
+      )}
 
       {/* No hay mas productos/servicios para mostrar */}
       {products?.data.length === 0 && (
