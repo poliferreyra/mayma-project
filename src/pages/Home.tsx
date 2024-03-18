@@ -146,7 +146,7 @@ export const Home = () => {
 
       {/* Se esconde paginado si no hay productos/servicios */}
       {products?.data.length !== 0 && (
-        <Pagination page={meta.page} meta={meta} setMeta={setMeta} />
+        <Pagination page={meta.page} meta={meta} setMeta={setMeta} isLoading={isLoading} />
       )}
     </Container>
   );

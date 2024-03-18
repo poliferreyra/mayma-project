@@ -1,4 +1,4 @@
-import { HStack, IconButton, Tag } from "@chakra-ui/react";
+import { HStack, IconButton, Skeleton, Tag } from "@chakra-ui/react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export interface Values {
@@ -11,6 +11,7 @@ export interface Values {
 interface PaginationProps {
   page: number;
   meta: Values;
+  isLoading: boolean;
 
   setMeta: React.Dispatch<React.SetStateAction<Values>>;
 }
@@ -19,6 +20,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   page,
   meta,
   setMeta,
+  isLoading,
 }) => {
   const handlePrevPage = () => {
     if (meta.page > 1)
@@ -37,26 +39,36 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <HStack justifyContent={"center"} mt={9}>
-      <IconButton
-        icon={<FaChevronLeft />}
-        variant="outline"
-        color="primary.default"
-        size="sm"
-        aria-label="Prev page"
-        onClick={handlePrevPage}
-        isDisabled={page === 1}
-      ></IconButton>
-      <Tag bg={"transparent"} color="primary.default" size="lg">
-        {page}
-      </Tag>
-      <IconButton
-        icon={<FaChevronRight />}
-        variant="outline"
-        color="primary.default"
-        size={"sm"}
-        aria-label="Next page"
-        onClick={handleNextPage}
-      ></IconButton>
+      {isLoading ? (
+        <>
+          <Skeleton w="40px" h="40px" />
+          <Skeleton w="40px" h="40px" />
+          <Skeleton w="40px" h="40px" />
+        </>
+      ) : (
+        <>
+          <IconButton
+            icon={<FaChevronLeft />}
+            variant="outline"
+            color="primary.default"
+            size="sm"
+            aria-label="Prev page"
+            onClick={handlePrevPage}
+            isDisabled={page === 1}
+          ></IconButton>
+          <Tag bg={"transparent"} color="primary.default" size="lg">
+            {page}
+          </Tag>
+          <IconButton
+            icon={<FaChevronRight />}
+            variant="outline"
+            color="primary.default"
+            size={"sm"}
+            aria-label="Next page"
+            onClick={handleNextPage}
+          ></IconButton>
+        </>
+      )}
     </HStack>
   );
 };
