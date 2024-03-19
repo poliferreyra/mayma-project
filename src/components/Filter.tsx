@@ -117,11 +117,7 @@ export const Filter: React.FC<FiltersProps> = ({
           )
         )}
 
-        {isLoading ? (
-          <Skeleton borderRadius="10px">
-            <Button size={"lg"}>Busqueda avanzada+icon</Button>
-          </Skeleton>
-        ) : (
+        {!isLoading && (
           <Button rightIcon={<IoSearchSharp />} onClick={onOpen}>
             Búsqueda avanzada
           </Button>

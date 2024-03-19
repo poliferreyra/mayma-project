@@ -76,7 +76,6 @@ export const Home = () => {
     setMeta(updatedMeta);
   };
 
-  // if (isLoading) return <Text>Loading...</Text>;
   if (isError)
     return (
       <Stack
@@ -93,7 +92,6 @@ export const Home = () => {
         </Alert>
       </Stack>
     );
-  // if (!products) return <Text>No data available</Text>;
 
   const productsEntities = products?.data.map((product) => {
     return {
@@ -146,7 +144,12 @@ export const Home = () => {
 
       {/* Se esconde paginado si no hay productos/servicios */}
       {products?.data.length !== 0 && (
-        <Pagination page={meta.page} meta={meta} setMeta={setMeta} isLoading={isLoading} />
+        <Pagination
+          page={meta.page}
+          meta={meta}
+          setMeta={setMeta}
+          isLoading={isLoading}
+        />
       )}
     </Container>
   );

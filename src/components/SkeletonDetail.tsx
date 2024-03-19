@@ -8,7 +8,6 @@ import {
   SkeletonCircle,
   SkeletonText,
   Stack,
-  StackDivider,
   Tag,
 } from "@chakra-ui/react";
 
@@ -25,7 +24,7 @@ export const SkeletonDetail = () => {
           <SkeletonText noOfLines={1} as="span" />
         </CardHeader>
         <CardBody>
-          <Stack divider={<StackDivider />} spacing="4">
+          <Stack spacing="4">
             <SkeletonText
               mt={3}
               mb={3}
@@ -42,7 +41,7 @@ export const SkeletonDetail = () => {
 
       <Card>
         <CardBody>
-          <Stack divider={<StackDivider />} spacing="4">
+          <Stack spacing="4">
             <HStack justifyContent={"space-between"}>
               <SkeletonText noOfLines={1} width="20%" as="span" />
               <SkeletonCircle size="10" />

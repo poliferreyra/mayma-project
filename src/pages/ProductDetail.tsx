@@ -1,8 +1,9 @@
 import {
+  Alert,
+  AlertTitle,
   Box,
   Card,
   CardBody,
-  CardHeader,
   Container,
   Heading,
   HStack,
@@ -12,9 +13,13 @@ import {
   Tag,
   Text,
 } from "@chakra-ui/react";
+import { useEffect } from "react";
+import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FaLink, FaLocationDot } from "react-icons/fa6";
 import { IoArrowBack } from "react-icons/io5";
 import { LuHeartHandshake } from "react-icons/lu";
+import { MdRunningWithErrors } from "react-icons/md";
+import { RiTwitterXFill } from "react-icons/ri";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -34,9 +39,26 @@ export const ProductDetail = () => {
   } = useQuery(["product", id], () => getProductById(id ?? ""));
   const entity = product?.entity;
 
-  // if (isLoading) return <Text>Loading...</Text>;
-  if (isError) return <Text>Error fetching data</Text>;
-  // if (!product) return <Text>No data available</Text>;
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+
+  if (isError)
+    return (
+      <Stack
+        h={"100vh"}
+        color="white"
+        justifyContent="center"
+        alignContent="center"
+      >
+        <Alert status="error" bg={"primary.default"} height="100px">
+          <MdRunningWithErrors size="30px" />
+          <AlertTitle ml={4} fontSize="lg">
+            Error al recuperar datos
+          </AlertTitle>
+        </Alert>
+      </Stack>
+    );
 
   const productsEntity = [
     {
@@ -66,31 +88,36 @@ export const ProductDetail = () => {
       ) : (
         <Stack>
           <GoogleMap markers={productsEntity} center={center} />
-
-          <Heading size={{ base: "md", md: "lg" }}>{product?.title}</Heading>
+          <Card>
+            <CardBody>
+              <Heading size={{ base: "md", md: "lg" }}>
+                {product?.title}
+              </Heading>
+            </CardBody>
+          </Card>
 
           {/* Sobre nosotros */}
           <Card>
-            <CardHeader>
-              <Heading size="md">Sobre Nosotros</Heading>
-            </CardHeader>
             <CardBody>
               <Stack divider={<StackDivider />} spacing="4">
-                <Box>
-                  <Text pt="2" fontSize="md">
-                    {entity?.about_us}
-                  </Text>
-                </Box>
-                <Tag
-                  size="lg"
-                  bg="transparent"
-                  maxW="max-content"
-                  color="primary.default"
-                  border="1px"
-                >
-                  {product?.product_type}
-                </Tag>
+                <Text fontSize="lg" fontWeight="bold">
+                  Sobre Nosotros
+                </Text>
+
+                <Text pt="2" fontSize="md">
+                  {entity?.about_us}
+                </Text>
               </Stack>
+              <Tag
+                mt={4}
+                size="lg"
+                bg="transparent"
+                maxW="max-content"
+                color="primary.default"
+                border="1px"
+              >
+                {product?.product_type}
+              </Tag>
             </CardBody>
           </Card>
 
@@ -102,11 +129,46 @@ export const ProductDetail = () => {
                   <Text fontSize="md" fontWeight="bold">
                     {entity?.fantasy_name}
                   </Text>
-                  <SocialLinks
-                    url={entity?.web_profile}
-                    icon={<FaLink />}
-                    aria-label={"Link"}
-                  />
+
+                  {/* Redes sociales */}
+                  <HStack>
+                    {entity?.web_profile && (
+                      <SocialLinks
+                        url={entity?.web_profile}
+                        icon={<FaLink />}
+                        aria-label={"Link"}
+                      />
+                    )}
+
+                    {entity?.facebook_profile && (
+                      <SocialLinks
+                        url={entity?.facebook_profile}
+                        icon={<FaFacebook />}
+                        aria-label={"Link"}
+                      />
+                    )}
+                    {entity?.instagram_profile && (
+                      <SocialLinks
+                        url={entity?.instagram_profile}
+                        icon={<FaInstagram />}
+                        aria-label={"Link"}
+                      />
+                    )}
+                    {entity?.linkedin_profile && (
+                      <SocialLinks
+                        url={entity?.linkedin_profile}
+                        icon={<FaLinkedin />}
+                        aria-label={"Link"}
+                      />
+                    )}
+                    {entity?.twitter_profile && (
+                      <SocialLinks
+                        url={entity?.twitter_profile}
+                        icon={<RiTwitterXFill />}
+                        aria-label={"Link"}
+                      />
+                    )}
+                  </HStack>
                 </HStack>
 
                 <Box>

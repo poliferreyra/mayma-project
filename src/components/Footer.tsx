@@ -84,8 +84,6 @@ export const Footer = () => {
           </Box>
         </VStack>
       </Container>
-
-      <Container maxW={"1200"} py={6}></Container>
     </Stack>
   );
 };
