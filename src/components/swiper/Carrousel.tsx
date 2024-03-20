@@ -49,7 +49,7 @@ export const Carrousel = () => {
               <Highlight
                 query="proyectos innovadores"
                 styles={{
-                  bg: "primary.default",
+                  bg: "primary.600",
                   color: "white",
                   px: "1",
                   rounded: "5px",
@@ -58,33 +58,17 @@ export const Carrousel = () => {
                 Buscamos proyectos innovadores
               </Highlight>
             </Heading>
-            {/* <Heading lineHeight={{ base: "0", md: "1" }}>
-              <Text
-                as="mark"
-                bg={"rgba(0, 0, 0, 0.5)"}
-                color="white"
-                fontSize={{ base: "14px", md: "30px", lg: "35px" }}
-              >
-                Buscamos proyectos innovadores
-              </Text>
-            </Heading> */}
+
             <br />
             <Heading
               lineHeight={{ base: "0", md: "1" }}
               fontSize={{ base: "14px", md: "30px", lg: "35px" }}
             >
               de salud física y mental
-              {/* <Text
-                as="mark"
-                bg={"rgba(0, 0, 0, 0.5)"}
-                color="white"
-                fontSize={{ base: "14px", md: "30px", lg: "35px" }}
-              >
-                de salud física y mental
-              </Text> */}
             </Heading>
             <Button
               as={Link}
+              colorScheme="primary"
               to="https://mayma.lat/salud"
               target="_blank"
               rel="noopener noreferrer"
@@ -118,7 +102,7 @@ export const Carrousel = () => {
               <Highlight
                 query="fortalecemos emprendedores"
                 styles={{
-                  bg: "secondary.default",
+                  bg: "secondary.400",
                   color: "white",
                   px: "1",
                   rounded: "5px",
@@ -127,16 +111,7 @@ export const Carrousel = () => {
                 Hace 17 años fortalecemos emprendedores
               </Highlight>
             </Heading>
-            {/* <Heading lineHeight={{ base: "0", md: "1" }}>
-              <Text
-                as="mark"
-                bgColor={"rgba(0, 0, 0, 0.5)"}
-                color="white"
-                fontSize={{ base: "14px", md: "30px", lg: "35px" }}
-              >
-                Hace 17 años fortalecemos emprendedores
-              </Text>
-            </Heading> */}
+
             <br />
             <Heading
               lineHeight={{ base: "0", md: "1" }}
@@ -144,14 +119,6 @@ export const Carrousel = () => {
               fontSize={{ base: "14px", md: "30px", lg: "35px" }}
             >
               socioambientales de Lationoamérica
-              {/* <Text
-                as="mark"
-                bgColor={"rgba(0, 0, 0, 0.5)"}
-                color="white"
-                fontSize={{ base: "14px", md: "30px", lg: "35px" }}
-              >
-                socioambientales de Lationoamérica
-              </Text> */}
             </Heading>
             <Button
               as={Link}

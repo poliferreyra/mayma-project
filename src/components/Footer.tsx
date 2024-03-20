@@ -21,13 +21,8 @@ import { SocialLinks } from "./SocialLinks";
 
 export const Footer = () => {
   return (
-    <Stack
-      mt={10}
-      px={6}
-      bg="#F8F8F8"
-      //boxShadow="0px -4px 6px rgba(0, 0, 0, 0.1)"
-    >
-      <Container maxW={"1200"} pt={6}>
+    <Stack mt={10} px={6} bg="#F8F8F8">
+      <Container maxW={"1200"} py={6} >
         <VStack gap={6}>
           <Box
             boxSize={{
@@ -79,8 +74,8 @@ export const Footer = () => {
               aria-label={"Youtube logo"}
             />
           </SimpleGrid>
-          <Box>
-            <Text color={"#9E9E9E"}>© 2017 Todos los derechos reservados</Text>
+          <Box >
+            <Text align={"center"} color={"#9E9E9E"}>© 2017 Todos los derechos reservados</Text>
           </Box>
         </VStack>
       </Container>

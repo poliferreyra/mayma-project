@@ -84,7 +84,7 @@ export const Home = () => {
         justifyContent="center"
         alignContent="center"
       >
-        <Alert status="error" bg={"primary.default"} height="100px">
+        <Alert status="error" bg={"primary.600"} height="100px">
           <MdRunningWithErrors size="30px" />
           <AlertTitle ml={4} fontSize="lg">
             Error al recuperar datos

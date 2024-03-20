@@ -47,7 +47,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <Heading size="sm">{entity.fantasy_name}</Heading>
           <Spacer />
           <Button as={Link} to={`/details/${id}`} variant="secondary"  size={{ base: "sm", md: "md" }}>
-            Ver detalle
+            Más Info
           </Button>
         </Stack>
       </CardBody>

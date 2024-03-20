@@ -1,7 +1,9 @@
 import {
   Alert,
   AlertTitle,
+  Badge,
   Box,
+  Button,
   Card,
   CardBody,
   Container,
@@ -10,7 +12,6 @@ import {
   Icon,
   Stack,
   StackDivider,
-  Tag,
   Text,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
@@ -22,7 +23,7 @@ import { MdRunningWithErrors } from "react-icons/md";
 import { RiTwitterXFill } from "react-icons/ri";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import GoogleMap from "@/components/googleMaps/GoogleMap";
 import { SkeletonDetail } from "@/components/SkeletonDetail";
@@ -31,6 +32,7 @@ import { getProductById } from "@/services/product.service";
 
 export const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
 
   const {
     data: product,
@@ -43,6 +45,11 @@ export const ProductDetail = () => {
     window.scrollTo({ top: 0 });
   }, []);
 
+  const goBack = () => {
+    navigate(-1);
+  };
+
+  // isError
   if (isError)
     return (
       <Stack
@@ -77,12 +84,15 @@ export const ProductDetail = () => {
 
   return (
     <Container maxW={"1200"} mt={5}>
-      <Link to="/">
-        <HStack>
-          <Icon as={IoArrowBack} />
-          <Text> Volver</Text>
-        </HStack>
-      </Link>
+      <Button
+        leftIcon={<IoArrowBack />}
+        variant="link"
+        colorScheme="null"
+        onClick={goBack}
+      >
+        Volver
+      </Button>
+
       {isLoading ? (
         <SkeletonDetail />
       ) : (
@@ -108,16 +118,20 @@ export const ProductDetail = () => {
                   {entity?.about_us}
                 </Text>
               </Stack>
-              <Tag
+              <Badge mt={4} fontSize="md" colorScheme="primary">
+                {product?.product_type}
+              </Badge>
+
+              {/* <Tag
                 mt={4}
                 size="lg"
                 bg="transparent"
                 maxW="max-content"
-                color="primary.default"
+                color="primary.600"
                 border="1px"
               >
                 {product?.product_type}
-              </Tag>
+              </Tag> */}
             </CardBody>
           </Card>
 
@@ -139,7 +153,6 @@ export const ProductDetail = () => {
                         aria-label={"Link"}
                       />
                     )}
-
                     {entity?.facebook_profile && (
                       <SocialLinks
                         url={entity?.facebook_profile}
@@ -170,7 +183,7 @@ export const ProductDetail = () => {
                     )}
                   </HStack>
                 </HStack>
-
+                {/* Direccion y tipo de empresa */}
                 <Box>
                   <HStack>
                     <Icon as={FaLocationDot} />
