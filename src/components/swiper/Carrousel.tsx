@@ -49,7 +49,7 @@ export const Carrousel = () => {
               <Highlight
                 query="proyectos innovadores"
                 styles={{
-                  bg: "primary.600",
+                  bg: "primary.500",
                   color: "white",
                   px: "1",
                   rounded: "5px",
@@ -68,7 +68,6 @@ export const Carrousel = () => {
             </Heading>
             <Button
               as={Link}
-              colorScheme="primary"
               to="https://mayma.lat/salud"
               target="_blank"
               rel="noopener noreferrer"

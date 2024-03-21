@@ -180,12 +180,7 @@ export const Filter: React.FC<FiltersProps> = ({
               >
                 Cerrar
               </Button>
-              <Button
-                bg="#d43f3a"
-                color="white"
-                rightIcon={<IoSearchSharp />}
-                type="submit"
-              >
+              <Button color="white" rightIcon={<IoSearchSharp />} type="submit">
                 Buscar
               </Button>
             </DrawerFooter>

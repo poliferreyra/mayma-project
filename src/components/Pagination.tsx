@@ -54,19 +54,19 @@ export const Pagination: React.FC<PaginationProps> = ({
           <IconButton
             icon={<FaChevronLeft />}
             variant="outline"
-            color="primary.600"
+            color="primary.500"
             size="sm"
             aria-label="Prev page"
             onClick={handlePrevPage}
             isDisabled={page === 1}
           ></IconButton>
-          <Tag bg={"transparent"} color="primary.600" size="lg">
+          <Tag bg={"transparent"} color="primary.500" size="lg">
             {page}
           </Tag>
           <IconButton
             icon={<FaChevronRight />}
             variant="outline"
-            color="primary.600"
+            color="primary.500"
             size={"sm"}
             aria-label="Next page"
             onClick={handleNextPage}

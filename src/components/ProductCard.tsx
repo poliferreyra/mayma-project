@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 
 import enBuenasManos from "@/assets/enBuenasManos.png";
 import { Product } from "@/types";
+import { IMG_EXTENSIONS } from "@/utils/utils";
 
 interface ProductCardProps {
   product: Product;
@@ -22,19 +23,34 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const {
     title,
     id,
-    //photo_path: img,
+    photo_path: img,
     short_description: shortDescription,
     entity,
   } = product;
+
+  const isValidImg = IMG_EXTENSIONS.some((ext) => img?.includes(ext));
+
   return (
     <Card boxShadow="lg" borderRadius={"2xl"}>
-      <Image
-        src={enBuenasManos}
-        alt={title}
-        borderTopRadius={"2xl"}
-        height={"171px"}
-        objectFit={"cover"}
-      />
+      {import.meta.env.PROD && isValidImg && (
+        <Image
+          src={`${import.meta.env.VITE_STORAGE_URL}${img}`}
+          alt={title}
+          borderTopRadius={"2xl"}
+          height={"171px"}
+          objectFit={"cover"}
+        />
+      )}
+      {import.meta.env.DEV && (
+        <Image
+          src={enBuenasManos}
+          alt={title}
+          borderTopRadius={"2xl"}
+          height={"171px"}
+          objectFit={"cover"}
+        />
+      )}
+
       <CardBody>
         <Stack mt="6" spacing="3">
           <Heading size="md">{title}</Heading>
@@ -46,7 +62,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <Stack mt="6" direction="row" align={"center"}>
           <Heading size="sm">{entity.fantasy_name}</Heading>
           <Spacer />
-          <Button as={Link} to={`/details/${id}`} variant="secondary"  size={{ base: "sm", md: "md" }}>
+          <Button
+            as={Link}
+            to={`/details/${id}`}
+            variant="secondary"
+            size={{ base: "sm", md: "md" }}
+          >
             Más Info
           </Button>
         </Stack>
