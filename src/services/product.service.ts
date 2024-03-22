@@ -21,6 +21,5 @@ export const getData = async ({
       "filter[networks]": 5, // Mayma
     },
   });
-  //console.log(data);
   return data;
 };

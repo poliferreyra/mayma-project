@@ -121,17 +121,6 @@ export const ProductDetail = () => {
               <Badge mt={4} fontSize="md" colorScheme="primary">
                 {product?.product_type}
               </Badge>
-
-              {/* <Tag
-                mt={4}
-                size="lg"
-                bg="transparent"
-                maxW="max-content"
-                color="primary.600"
-                border="1px"
-              >
-                {product?.product_type}
-              </Tag> */}
             </CardBody>
           </Card>
 

@@ -19,7 +19,6 @@ export const Carrousel = () => {
   return (
     <Swiper
       effect={"fade"}
-      //navigation={true}
       grabCursor={true}
       pagination={{
         clickable: true,
@@ -79,6 +78,7 @@ export const Carrousel = () => {
           </Box>
         </Box>
       </SwiperSlide>
+      
       {/* slide grupo */}
       <SwiperSlide>
         <Box

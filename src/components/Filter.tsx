@@ -58,7 +58,6 @@ export const Filter: React.FC<FiltersProps> = ({
   const handleFilter = (e: ChangeEvent<HTMLInputElement>) => {
     setFilterValue({ ...filterValue, [e.target.name]: e.target.value });
   };
-  //console.log(filterValue);
 
   const handleSelectChange = (selectedOptions: MultiValue<Option>) => {
     setFilterValue({
