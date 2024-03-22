@@ -125,7 +125,7 @@ export const Carrousel = () => {
               target="_blank"
               rel="noopener noreferrer"
               size={{ base: "sm", md: "md" }}
-              variant={"secondary"}
+              colorScheme={"secondary"}
               mt="24px"
             >
               Hablemos

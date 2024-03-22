@@ -26,6 +26,9 @@ import { getData } from "@/services/product.service";
 import { Product } from "@/types";
 import { createArray } from "@/utils/utils";
 
+ // Coordenadas promedio BsAs - Santa Fe
+ const center = { lat: -33.1185, lng: -59.5408 };
+
 export const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -102,9 +105,7 @@ export const Home = () => {
       lng: product.entity.location_lng,
     };
   });
-  // Coordenadas promedio BsAs - Santa Fe
-  const center = { lat: -33.1185, lng: -59.5408 };
-
+ 
   return (
     <Container maxW={"1200"} mt={5}>
       {isLoading ? (

@@ -65,7 +65,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <Button
             as={Link}
             to={`/details/${id}`}
-            variant="secondary"
+            colorScheme="secondary"
             size={{ base: "sm", md: "md" }}
           >
             Más Info
