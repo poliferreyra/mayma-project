@@ -9,6 +9,7 @@ import {
   Heading,
   Skeleton,
   Stack,
+  Text,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { MdRunningWithErrors } from "react-icons/md";
@@ -26,8 +27,8 @@ import { getData } from "@/services/product.service";
 import { Product } from "@/types";
 import { createArray } from "@/utils/utils";
 
- // Coordenadas promedio BsAs - Santa Fe
- const center = { lat: -33.1185, lng: -59.5408 };
+// Coordenadas promedio BsAs - Santa Fe
+const center = { lat: -33.1185, lng: -59.5408 };
 
 export const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -105,7 +106,7 @@ export const Home = () => {
       lng: product.entity.location_lng,
     };
   });
- 
+
   return (
     <Container maxW={"1200"} mt={5}>
       {isLoading ? (
@@ -115,8 +116,11 @@ export const Home = () => {
       ) : (
         <Carrousel />
       )}
+      <Box boxShadow="lg" p="3" borderRadius="15px" my={5}>
+        <Text>Comunidad de emprendedores LATAM</Text>
 
-      <GoogleMap markers={productsEntities} center={center} />
+        <GoogleMap markers={productsEntities} center={center} />
+      </Box>
 
       {/* Si no hay mas productos/servicios no muestra filtros */}
       {products?.data.length !== 0 && (

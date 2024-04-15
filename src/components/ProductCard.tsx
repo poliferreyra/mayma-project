@@ -5,11 +5,12 @@ import {
   Divider,
   Heading,
   Image,
+  Link,
   Spacer,
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link as LinkRouter } from "react-router-dom";
 
 import enBuenasManos from "@/assets/enBuenasManos.png";
 import { Product } from "@/types";
@@ -60,10 +61,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <Divider mt={3} />
 
         <Stack mt="6" direction="row" align={"center"}>
-          <Heading size="sm">{entity.fantasy_name}</Heading>
+          <Link
+            isExternal
+            size="sm"
+            fontWeight={"500"}
+            color={"secondary.500"}
+            href={entity?.web_profile}
+          >
+            {entity.fantasy_name}
+          </Link>
+
           <Spacer />
           <Button
-            as={Link}
+            as={LinkRouter}
             to={`/details/${id}`}
             colorScheme="secondary"
             size={{ base: "sm", md: "md" }}

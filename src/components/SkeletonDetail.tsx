@@ -19,7 +19,7 @@ export const SkeletonDetail = () => {
       <SkeletonText noOfLines={1} as="span" skeletonHeight="6" width="80%" />
 
       {/* Sobre nosotros */}
-      <Card>
+      <Card mb={5}>
         <CardHeader width="20%">
           <SkeletonText noOfLines={1} as="span" />
         </CardHeader>
@@ -39,7 +39,7 @@ export const SkeletonDetail = () => {
         </CardBody>
       </Card>
 
-      <Card>
+      <Card mb={5}>
         <CardBody>
           <Stack spacing="4">
             <HStack justifyContent={"space-between"}>
