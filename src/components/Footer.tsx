@@ -29,7 +29,7 @@ export const Footer = () => {
       <Container maxW={"1200"} py={6} bg="">
         <SimpleGrid columns={2} spacing={10}>
           {/* Mayma */}
-          <VStack>
+          <VStack >
             <Center
               boxSize={{
                 base: "75%",
@@ -91,13 +91,14 @@ export const Footer = () => {
           </VStack>
 
           {/* Fonselp */}
-          <VStack>
+          <VStack >
             <Center
               boxSize={{
                 base: "60%",
                 sm: "35%",
                 md: "25%",
               }}
+              mt={3}
             >
               <Image src={logoFonselp} alt="logo Fonselp" />
             </Center>
@@ -107,7 +108,7 @@ export const Footer = () => {
               columns={2}
               spacing={1}
               justifyContent={"center"}
-              py={6}
+              py={8}
             >
               <SocialLinks
                 url="https://www.facebook.com/fonselp"
