@@ -17,10 +17,11 @@ import {
   FaWhatsapp,
   FaYoutube,
 } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
-import logoFonselp from "@/assets/logoFonselp.png";
 import logoMayma from "@/assets/logoMayma.png";
 
+import { FonselpLogo } from "./FonselpLogo";
 import { SocialLinks } from "./SocialLinks";
 
 export const Footer = () => {
@@ -29,7 +30,7 @@ export const Footer = () => {
       <Container maxW={"1200"} py={6} bg="">
         <SimpleGrid columns={2} spacing={10}>
           {/* Mayma */}
-          <VStack >
+          <VStack>
             <Center
               boxSize={{
                 base: "75%",
@@ -91,7 +92,7 @@ export const Footer = () => {
           </VStack>
 
           {/* Fonselp */}
-          <VStack >
+          <VStack>
             <Center
               boxSize={{
                 base: "60%",
@@ -100,12 +101,12 @@ export const Footer = () => {
               }}
               mt={3}
             >
-              <Image src={logoFonselp} alt="logo Fonselp" />
+              <FonselpLogo />
             </Center>
 
             {/* social icons */}
             <SimpleGrid
-              columns={2}
+              columns={3}
               spacing={1}
               justifyContent={"center"}
               py={8}
@@ -123,6 +124,13 @@ export const Footer = () => {
                 icon={<FaLinkedin />}
                 _hover={{ color: "#0073B1" }}
                 aria-label={"Linkedin logo"}
+              />
+              <SocialLinks
+                url="https://twitter.com/FonselpC"
+                color="#9E9E9E"
+                icon={<FaXTwitter />}
+                _hover={{ color: "#000000" }}
+                aria-label={"Twitter logo"}
               />
             </SimpleGrid>
 

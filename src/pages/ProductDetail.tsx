@@ -98,7 +98,7 @@ export const ProductDetail = () => {
       ) : (
         <Stack>
           <GoogleMap markers={productsEntity} center={center} />
-          <Card boxShadow="md" mb={5}>
+          <Card boxShadow="base" mb={5}>
             <CardBody>
               <Heading size={{ base: "md", md: "lg" }}>
                 {product?.title}
@@ -107,7 +107,7 @@ export const ProductDetail = () => {
           </Card>
 
           {/* Sobre nosotros */}
-          <Card boxShadow="md" mb={5}>
+          <Card boxShadow="base" mb={5}>
             <CardBody>
               <Stack divider={<StackDivider />} spacing="4">
                 <Text fontSize="lg" fontWeight="bold">
@@ -125,7 +125,7 @@ export const ProductDetail = () => {
           </Card>
 
           {/* Datos de la empresa */}
-          <Card boxShadow="md" mb={5}>
+          <Card boxShadow="base" mb={5}>
             <CardBody>
               <Stack divider={<StackDivider />} spacing="4">
                 <HStack justifyContent={"space-between"}>
