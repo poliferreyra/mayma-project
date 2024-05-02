@@ -117,7 +117,7 @@ export const Home = () => {
         <Carrousel />
       )}
       <Box boxShadow="lg" p="3" borderRadius="15px" my={5}>
-        <Text>Comunidad de emprendedores LATAM</Text>
+        <Text>Humanidad emprendedora</Text>
 
         <GoogleMap markers={productsEntities} center={center} />
       </Box>
