@@ -39,6 +39,8 @@ export const Home = () => {
     title: searchParams.get("title") || "",
     description: searchParams.get("description") || "",
     productTypes: searchParams.get("productTypes") || "",
+    entityType: searchParams.get("entityType") || "",
+
   });
 
   const {
@@ -62,6 +64,9 @@ export const Home = () => {
     if (meta.productTypes) {
       upDatedParams.productTypes = meta.productTypes;
     }
+    if (meta.entityType) {
+      upDatedParams.entityType = meta.entityType;
+    }
 
     setSearchParams(upDatedParams);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -76,6 +81,7 @@ export const Home = () => {
       title: "",
       description: "",
       productTypes: "",
+      entityType:"",
     };
     setMeta(updatedMeta);
   };

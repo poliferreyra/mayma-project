@@ -7,6 +7,7 @@ export interface Values {
   title: string;
   description: string;
   productTypes: string;
+  entityType: string,
 }
 
 interface PaginationProps {

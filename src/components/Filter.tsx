@@ -20,6 +20,7 @@ import Select, { MultiValue } from "react-select";
 
 import { Option } from "@/types";
 import { MetaValues } from "@/types";
+import { entityTypes } from "@/utils/utils";
 
 interface FiltersProps {
   meta: MetaValues;
@@ -31,18 +32,31 @@ interface FormValues {
   title: string;
   description: string;
   productTypes: Option[];
+  entityType: Option[];
 }
 
 const initFormValues = {
   title: "",
   description: "",
   productTypes: [],
+  entityType: [],
 };
+
+// options => filter Select
+const createOptEntityTypes = () => {
+  return entityTypes.map((entity) => ({
+    value: entity.id.toString(),
+    label: entity.name,
+  }));
+};
+
+const optionsEntityType = createOptEntityTypes();
 
 const options = [
   { value: "producto", label: "Producto" },
   { value: "servicio", label: "Servicio" },
 ];
+
 export const Filter: React.FC<FiltersProps> = ({
   meta,
   setMeta,
@@ -55,24 +69,22 @@ export const Filter: React.FC<FiltersProps> = ({
   });
   const btnRef = React.useRef<HTMLButtonElement>(null);
 
+  // handle filter - select - submit
   const handleFilter = (e: ChangeEvent<HTMLInputElement>) => {
     setFilterValue({ ...filterValue, [e.target.name]: e.target.value });
   };
 
-  const handleSelectChange = (selectedOptions: MultiValue<Option>) => {
+  const handleProductTypes = (selectedOptions: MultiValue<Option>) => {
     setFilterValue({
       ...filterValue,
       productTypes: selectedOptions as Option[],
     });
   };
 
-  const deleteFilter = () => {
-    setFilterValue({ ...initFormValues });
-    setMeta({
-      page: 1,
-      title: "",
-      description: "",
-      productTypes: "",
+  const handleEntityTypes = (selectedOptions: MultiValue<Option>) => {
+    setFilterValue({
+      ...filterValue,
+      entityType: selectedOptions as Option[],
     });
   };
 
@@ -85,10 +97,24 @@ export const Filter: React.FC<FiltersProps> = ({
       productTypes: filterValue.productTypes
         .map((option) => option.value)
         .join(","),
+      entityType: filterValue.entityType
+        .map((option) => option.value)
+        .join(","),
       page: 1,
     };
     setMeta(updatedMeta);
     onClose();
+  };
+
+  const deleteFilter = () => {
+    setFilterValue({ ...initFormValues });
+    setMeta({
+      page: 1,
+      title: "",
+      description: "",
+      productTypes: "",
+      entityType: "",
+    });
   };
 
   return (
@@ -100,12 +126,16 @@ export const Filter: React.FC<FiltersProps> = ({
       >
         {(isLoading && meta.title) ||
         (isLoading && meta.description) ||
-        (isLoading && meta.productTypes) ? (
+        (isLoading && meta.productTypes) ||
+        (isLoading && meta.entityType) ? (
           <Skeleton borderRadius="10px">
             <Button size={"lg"}>Eliminar Filtros</Button>
           </Skeleton>
         ) : (
-          (meta.title || meta.description || meta.productTypes) && (
+          (meta.title ||
+            meta.description ||
+            meta.productTypes ||
+            meta.entityType) && (
             <Button
               rightIcon={<IoClose />}
               variant="outline"
@@ -140,6 +170,25 @@ export const Filter: React.FC<FiltersProps> = ({
             <DrawerBody>
               <Stack spacing="24px">
                 <Box>
+                  <FormLabel htmlFor="owner">Tipo de Producto</FormLabel>
+                  <Select
+                    isMulti
+                    value={filterValue.productTypes}
+                    onChange={handleProductTypes}
+                    options={options}
+                  />
+                </Box>
+
+                <Box>
+                  <FormLabel htmlFor="owner">Tipo de Organización</FormLabel>
+                  <Select
+                    isMulti
+                    value={filterValue.entityType}
+                    onChange={handleEntityTypes}
+                    options={optionsEntityType}
+                  />
+                </Box>
+                <Box>
                   <FormLabel>Título</FormLabel>
                   <Input
                     name="title"
@@ -155,16 +204,6 @@ export const Filter: React.FC<FiltersProps> = ({
                     placeholder="Palabra clave"
                     value={filterValue.description}
                     onChange={handleFilter}
-                  />
-                </Box>
-
-                <Box>
-                  <FormLabel htmlFor="owner">Tipo de Producto</FormLabel>
-                  <Select
-                    isMulti
-                    value={filterValue.productTypes}
-                    onChange={handleSelectChange}
-                    options={options}
                   />
                 </Box>
               </Stack>

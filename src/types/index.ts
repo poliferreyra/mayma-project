@@ -75,6 +75,7 @@ export interface Access {
     title: string;
     description: string;
     productTypes: string;
+    entityType: string,
   }
   
   export interface Option {
