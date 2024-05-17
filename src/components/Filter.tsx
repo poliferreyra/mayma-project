@@ -18,9 +18,10 @@ import React, { ChangeEvent, useState } from "react";
 import { IoClose, IoSearchSharp } from "react-icons/io5";
 import Select, { MultiValue } from "react-select";
 
+import { useEntityTypes } from "@/components/hook/useEntityTypes";
 import { Option } from "@/types";
 import { MetaValues } from "@/types";
-import { entityTypes } from "@/utils/utils";
+// import { entityTypes } from "@/utils/utils";
 
 interface FiltersProps {
   meta: MetaValues;
@@ -42,16 +43,6 @@ const initFormValues = {
   entityType: [],
 };
 
-// options => filter Select
-const createOptEntityTypes = () => {
-  return entityTypes.map((entity) => ({
-    value: entity.id.toString(),
-    label: entity.name,
-  }));
-};
-
-const optionsEntityType = createOptEntityTypes();
-
 const options = [
   { value: "producto", label: "Producto" },
   { value: "servicio", label: "Servicio" },
@@ -63,6 +54,19 @@ export const Filter: React.FC<FiltersProps> = ({
   isLoading,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { entityTypes } = useEntityTypes();
+
+  // options => filter Select
+  const createOptEntityTypes = () => {
+    return entityTypes.map((entity) => ({
+      value: entity.id.toString(),
+      label: entity.name,
+    }));
+  };
+
+  const optionsEntityType = createOptEntityTypes();
+
+ console.log(optionsEntityType)
 
   const [filterValue, setFilterValue] = useState<FormValues>({
     ...initFormValues,
