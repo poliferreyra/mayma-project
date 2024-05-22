@@ -23,12 +23,15 @@ export const getData = async ({
       "filter[networks]": 5, // Mayma
     },
   });
-  // console.log(data);
+
   return data;
 };
 
 export const getFilterData = async () => {
-  const { data } = await api.get("catalogs/filters");
+  const { data } = await api.get("catalogs/filters", {
+    params: {
+      "filter[networks]": 5, // Mayma
+    },
+  });
   return data;
 };
-

@@ -18,10 +18,9 @@ import React, { ChangeEvent, useState } from "react";
 import { IoClose, IoSearchSharp } from "react-icons/io5";
 import Select, { MultiValue } from "react-select";
 
-import { useEntityTypes } from "@/components/hook/useEntityTypes";
+import { useFiltersTypes } from "@/hook/useFiltersTypes";
 import { Option } from "@/types";
 import { MetaValues } from "@/types";
-// import { entityTypes } from "@/utils/utils";
 
 interface FiltersProps {
   meta: MetaValues;
@@ -43,30 +42,33 @@ const initFormValues = {
   entityType: [],
 };
 
-const options = [
-  { value: "producto", label: "Producto" },
-  { value: "servicio", label: "Servicio" },
-];
-
 export const Filter: React.FC<FiltersProps> = ({
   meta,
   setMeta,
   isLoading,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { entityTypes } = useEntityTypes();
+  const { entityTypes, productTypes } = useFiltersTypes();
 
-  // options => filter Select
+  // options => filter Select entity types
   const createOptEntityTypes = () => {
     return entityTypes.map((entity) => ({
-      value: entity.id.toString(),
+      value: String(entity.id),
       label: entity.name,
     }));
   };
-
   const optionsEntityType = createOptEntityTypes();
 
- console.log(optionsEntityType)
+  // options => filter Select product types
+  const createOptProductTypes = () => {
+    return productTypes
+      .filter((type: string) => type !== "proyecto")
+      .map((type: string) => ({
+        value: type,
+        label: type.charAt(0).toUpperCase() + type.slice(1),
+      }));
+  };
+  const optionsProductTypes = createOptProductTypes();
 
   const [filterValue, setFilterValue] = useState<FormValues>({
     ...initFormValues,
@@ -84,7 +86,7 @@ export const Filter: React.FC<FiltersProps> = ({
       productTypes: selectedOptions as Option[],
     });
   };
-
+  
   const handleEntityTypes = (selectedOptions: MultiValue<Option>) => {
     setFilterValue({
       ...filterValue,
@@ -179,7 +181,7 @@ export const Filter: React.FC<FiltersProps> = ({
                     isMulti
                     value={filterValue.productTypes}
                     onChange={handleProductTypes}
-                    options={options}
+                    options={optionsProductTypes}
                   />
                 </Box>
 

@@ -57,23 +57,6 @@ export const Header = () => {
             </Flex>
           </Box>
         </SimpleGrid>
-
-        {/* <Link to="/">
-          <Box display={"flex"} justifyContent={"center"}>
-            <Image
-              boxSize={{
-                base: "40%",
-                sm: "30%",
-                md: "20%",
-                lg: "15%",
-                xl: "15%",
-              }}
-              objectFit="cover"
-              src={logo}
-              alt="logo Mayma"
-            />
-          </Box>
-        </Link> */}
       </Container>
     </Stack>
   );

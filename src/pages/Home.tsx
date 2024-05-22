@@ -40,7 +40,6 @@ export const Home = () => {
     description: searchParams.get("description") || "",
     productTypes: searchParams.get("productTypes") || "",
     entityType: searchParams.get("entityType") || "",
-
   });
 
   const {
@@ -73,7 +72,8 @@ export const Home = () => {
   }, [meta]);
 
   const handleBackToInit = () => {
-    navigate("/", { state: { page: 1 } }); // Esto navega a la ruta "/" y pasa { page: 1 } como estado/parametro
+    navigate("/", { state: { page: 1 } });
+    // Esto navega a la ruta "/" y pasa { page: 1 } como estado/parametro
 
     const updatedMeta = {
       ...meta,
@@ -81,7 +81,7 @@ export const Home = () => {
       title: "",
       description: "",
       productTypes: "",
-      entityType:"",
+      entityType: "",
     };
     setMeta(updatedMeta);
   };
