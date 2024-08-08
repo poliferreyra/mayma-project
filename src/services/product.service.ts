@@ -20,10 +20,14 @@ export const getData = async ({
       "filter[withDescription]": description,
       "filter[product_types]": productTypes,
       "filter[inEntityType]": entityType === "0" ? "" : entityType,
-      "filter[networks]": 5, // Mayma
+      // "filter[networks]": 5, // Mayma
+
+      // se agrega include para renderizar de manera temporal
+      include: "networks",
     },
   });
 
+  console.log(data);
   return data;
 };
 
