@@ -31,9 +31,14 @@ interface GoogleMapProps {
 const GoogleMap: FC<GoogleMapProps> = ({ markers, styles, center }) => {
   const mapContainerStyle = styles || containerStyle;
 
+  const { REACT_APP_GOOGLE_MAPS_API_KEY } = import.meta.env as Record<
+    string,
+    string
+  >;
+
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyBy82ADLecsVRhtSRl3U0eJrmkHGU19RK8",
+    googleMapsApiKey: REACT_APP_GOOGLE_MAPS_API_KEY,
   });
 
   if (!isLoaded) return null;
