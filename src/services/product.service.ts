@@ -1,8 +1,8 @@
-import { MetaValues, Product, Response, ResponseProduct } from "@/types";
+import { MetaValues, Product, Response } from "@/types";
 import { api } from "@/utils/axios";
 
 export const getProductById = async (id: string) => {
-  const { data } = await api.get<ResponseProduct>(`/catalogs/${id}`);
+  const { data } = await api.get<Response<Product>>(`/catalogs/${id}`);
   return data.data;
 };
 
@@ -20,14 +20,10 @@ export const getData = async ({
       "filter[withDescription]": description,
       "filter[product_types]": productTypes,
       "filter[inEntityType]": entityType === "0" ? "" : entityType,
-      // "filter[networks]": 5, // Mayma
-
-      // se agrega include para renderizar de manera temporal
-      include: "networks",
+      "filter[networks]": 5, // Mayma
     },
   });
 
-  console.log(data);
   return data;
 };
 
