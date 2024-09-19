@@ -35,8 +35,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     <Card boxShadow="lg" borderRadius={"2xl"}>
       {import.meta.env.PROD && isValidImg && (
         <Image
-          // src={`${import.meta.env.VITE_STORAGE_URL}${img}`}
-          src={`${import.meta.env.VITE_STORAGE_URL}${enBuenasManos}`}
+          src={`${import.meta.env.VITE_STORAGE_URL}${img}`}
           alt={title}
           borderTopRadius={"2xl"}
           height={"171px"}
