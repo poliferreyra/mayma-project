@@ -7,20 +7,24 @@ export interface Values {
   title: string;
   description: string;
   productTypes: string;
-  entityType: string,
+  entityType: string;
 }
 
 interface PaginationProps {
   page: number;
   meta: Values;
+  totalPage: number;
   isLoading: boolean;
 
   setMeta: React.Dispatch<React.SetStateAction<Values>>;
 }
 
+const perPage = 9;
+
 export const Pagination: React.FC<PaginationProps> = ({
   page,
   meta,
+  totalPage,
   setMeta,
   isLoading,
 }) => {
@@ -33,10 +37,12 @@ export const Pagination: React.FC<PaginationProps> = ({
   };
 
   const handleNextPage = () => {
-    setMeta({
-      ...meta,
-      page: meta.page + 1,
-    });
+    if (totalPage === perPage) {
+      setMeta({
+        ...meta,
+        page: meta.page + 1,
+      });
+    }
   };
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -71,6 +77,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             size={"sm"}
             aria-label="Next page"
             onClick={handleNextPage}
+            isDisabled={totalPage < perPage}
           ></IconButton>
         </>
       )}

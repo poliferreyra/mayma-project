@@ -27,9 +27,6 @@ import { getData } from "@/services/product.service";
 import { Product } from "@/types";
 import { createArray } from "@/utils/utils";
 
-// Coordenadas promedio BsAs - Santa Fe
-const center = { lat: -33.1185, lng: -59.5408 };
-
 export const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -43,7 +40,7 @@ export const Home = () => {
   });
 
   const {
-    data: products,
+    data: { data: products } = { data: [] },
     isLoading,
     isError,
   } = useQuery(["products", meta], () => getData(meta));
@@ -103,7 +100,7 @@ export const Home = () => {
       </Stack>
     );
 
-  const productsEntities = products?.data.map((product) => {
+  const productsEntities = products?.map((product) => {
     return {
       id: product.entity.id,
       bussinessName: product.entity.bussiness_name,
@@ -125,16 +122,16 @@ export const Home = () => {
       <Box boxShadow="lg" p="3" borderRadius="15px" my={5}>
         <Text>Humanidad emprendedora</Text>
 
-        <GoogleMap markers={productsEntities} center={center} />
+        <GoogleMap markers={productsEntities} />
       </Box>
 
       {/* Si no hay mas productos/servicios no muestra filtros */}
-      {products?.data.length !== 0 && (
+      {products?.length !== 0 && (
         <Filter meta={meta} setMeta={setMeta} isLoading={isLoading} />
       )}
 
       {/* No hay mas productos/servicios para mostrar */}
-      {products?.data.length === 0 && (
+      {products?.length === 0 && (
         <Card align="center" mt={5} p={9}>
           <Heading size="md"> No hay productos y/o servicios</Heading>
           <CardFooter>
@@ -147,17 +144,18 @@ export const Home = () => {
         <Masonry gutter="15px">
           {isLoading
             ? createArray(9).map((e) => <SkeletonCard key={e} />)
-            : products?.data.map((product: Product) => (
+            : products?.map((product: Product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
         </Masonry>
       </ResponsiveMasonry>
 
       {/* Se esconde paginado si no hay productos/servicios */}
-      {products?.data.length !== 0 && (
+      {products?.length !== 0 && (
         <Pagination
           page={meta.page}
           meta={meta}
+          totalPage={products.length}
           setMeta={setMeta}
           isLoading={isLoading}
         />

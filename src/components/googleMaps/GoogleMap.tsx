@@ -28,17 +28,20 @@ interface GoogleMapProps {
   styles?: { width: string; height: string };
 }
 
-const GoogleMap: FC<GoogleMapProps> = ({ markers, styles, center }) => {
+// Coordenadas promedio BsAs - Santa Fe
+const center = { lat: -33.1185, lng: -59.5408 };
+
+const GoogleMap: FC<GoogleMapProps> = ({ markers, styles }) => {
   const mapContainerStyle = styles || containerStyle;
 
-  const { REACT_APP_GOOGLE_MAPS_API_KEY } = import.meta.env as Record<
+  const { VITE_GOOGLE_MAPS_API_KEY } = import.meta.env as Record<
     string,
     string
   >;
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: REACT_APP_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: VITE_GOOGLE_MAPS_API_KEY,
   });
 
   if (!isLoaded) return null;
